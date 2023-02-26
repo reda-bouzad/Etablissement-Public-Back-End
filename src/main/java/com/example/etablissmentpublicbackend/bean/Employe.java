@@ -14,6 +14,15 @@ public class Employe {
     @ManyToOne
     private EntiteAdministratif entiteAdministratif;
     private Double salaireDeBase;
+    private Long nombre_mois;
+
+    public Long getNombre_mois() {
+        return nombre_mois;
+    }
+
+    public void setNombre_mois(Long nombre_mois) {
+        this.nombre_mois = nombre_mois;
+    }
 
     public Long getId() {
         return id;
@@ -71,3 +80,4 @@ public class Employe {
         this.salaireDeBase = salaireDeBase;
     }
 }
+
