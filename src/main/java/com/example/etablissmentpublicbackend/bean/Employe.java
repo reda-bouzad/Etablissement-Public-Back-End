@@ -9,8 +9,8 @@ public class Employe {
     private String cin;
     private String nom;
     private String prenom;
-    //@ManyToOne
-    //private Echelon echelon;
+    @ManyToOne
+    private Echellon echellon;
     @ManyToOne
     private EntiteAdministratif entiteAdministratif;
     private Double salaireDeBase;
@@ -47,13 +47,13 @@ public class Employe {
         this.prenom = prenom;
     }
 
-    /*public Echelon getEchelon() {
-        return echelon;
-    }*/
+    public Echellon getEchellon() {
+        return echellon;
+    }
 
-    /*public void setEchelon(Echelon echelon) {
-        this.echelon = echelon;
-    }*/
+    public void setEchellon(Echellon echellon) {
+        this.echellon = echellon;
+    }
 
     public EntiteAdministratif getEntiteAdministratif() {
         return entiteAdministratif;
