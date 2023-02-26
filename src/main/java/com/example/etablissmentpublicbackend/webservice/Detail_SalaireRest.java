@@ -12,19 +12,12 @@ import java.util.List;
 public class Detail_SalaireRest {
     @Autowired
     private Detail_SalaireService detailSalaireService;
-    @GetMapping("/libelle/{libelle}")
-    public Detail_Salaire findByLibelle(@PathVariable String libelle) {
-        return detailSalaireService.findByLibelle(libelle);
-    }
+
     @GetMapping("/code/{code}")
     public Detail_Salaire findByCode(@PathVariable String code) {
         return detailSalaireService.findByCode(code);
     }
-    @Transactional
-    @DeleteMapping("/libelle/{libelle}")
-    public int deleteByLibelle(@PathVariable String libelle) {
-        return detailSalaireService.deleteByLibelle(libelle);
-    }
+
     @Transactional
     @DeleteMapping("/code/{code}")
     public int deleteByCode(@PathVariable String code) {

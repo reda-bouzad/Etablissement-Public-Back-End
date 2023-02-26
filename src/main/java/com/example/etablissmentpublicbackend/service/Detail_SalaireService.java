@@ -12,18 +12,13 @@ public class Detail_SalaireService {
     @Autowired
     private Detail_SalaireDao detailSalaireDao;
 
-    public Detail_Salaire findByLibelle(String libelle) {
-        return detailSalaireDao.findByLibelle(libelle);
-    }
+
 
     public Detail_Salaire findByCode(String code) {
         return detailSalaireDao.findByCode(code);
     }
 
-    public int deleteByLibelle(String libelle) {
-         detailSalaireDao.deleteByLibelle(libelle);
-         return 1;
-    }
+
 
     public int deleteByCode(String code) {
          detailSalaireDao.deleteByCode(code);

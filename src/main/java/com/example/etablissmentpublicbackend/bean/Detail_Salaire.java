@@ -2,6 +2,8 @@ package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Detail_Salaire {
     @Id
@@ -9,9 +11,7 @@ public class Detail_Salaire {
     private Long id;
     private String libelle;
     private String code;
-    private int jour;
-    private int mois;
-    private int annee;
+    private Date date;
     private Double salaire_base;
     private Double prime_responsabilité;
     private Double prime_generale;
@@ -27,28 +27,12 @@ public class Detail_Salaire {
         this.id = id;
     }
 
-    public int getJour() {
-        return jour;
+    public Date getDate() {
+        return date;
     }
 
-    public void setJour(int jour) {
-        this.jour = jour;
-    }
-
-    public int getMois() {
-        return mois;
-    }
-
-    public void setMois(int mois) {
-        this.mois = mois;
-    }
-
-    public int getAnnee() {
-        return annee;
-    }
-
-    public void setAnnee(int annee) {
-        this.annee = annee;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Double getSalaire_base() {
