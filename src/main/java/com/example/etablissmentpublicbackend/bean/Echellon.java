@@ -77,4 +77,12 @@ public class Echellon {
     public void setDelai(Long delai) {
         this.delai = delai;
     }
+
+    public Echelle getEchelle() {
+        return echelle;
+    }
+
+    public void setEchelle(Echelle echelle) {
+        this.echelle = echelle;
+    }
 }

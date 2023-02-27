@@ -80,5 +80,13 @@ public class Employe {
     public void setSalaireDeBase(Double salaireDeBase) {
         this.salaireDeBase = salaireDeBase;
     }
+
+    public Responsabilite getResponsabilite() {
+        return responsabilite;
+    }
+
+    public void setResponsabilite(Responsabilite responsabilite) {
+        this.responsabilite = responsabilite;
+    }
 }
 

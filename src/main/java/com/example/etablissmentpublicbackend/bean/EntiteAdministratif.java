@@ -42,4 +42,5 @@ public class EntiteAdministratif {
     public void setChefEntite(Employe chefEntite) {
         ChefEntite = chefEntite;
     }
+
 }

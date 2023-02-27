@@ -35,4 +35,12 @@ public class Echelle {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
 }

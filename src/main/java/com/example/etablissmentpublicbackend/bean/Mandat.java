@@ -73,4 +73,5 @@ public class Mandat {
     public void setEmploye(Employe employe) {
         this.employe = employe;
     }
+
 }
