@@ -27,7 +27,6 @@ public class Detail_SalaireRest {
     public List<Detail_Salaire> findAll() {
         return detailSalaireService.findAll();
     }
-    @Transactional
     @PostMapping("/")
     public int save(@RequestBody Detail_Salaire detailSalaire) {
         return detailSalaireService.save(detailSalaire);

@@ -16,7 +16,6 @@ public class GradeRest {
     public Grade findByCode(@PathVariable String code) {
         return gradeService.findByCode(code);
     }
-    @Transactional
     @DeleteMapping("/code/{code}")
     public int deleteByCode(@PathVariable String code) {
         return gradeService.deleteByCode(code);

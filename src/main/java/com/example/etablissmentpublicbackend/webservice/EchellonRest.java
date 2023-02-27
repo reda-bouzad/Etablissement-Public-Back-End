@@ -26,7 +26,7 @@ public class EchellonRest {
     public List<Echellon> findAll() {
         return echellonService.findAll();
     }
-    @Transactional
+
     @PostMapping("/")
     public int save(@RequestBody Echellon echellon) {
         return echellonService.save(echellon);

@@ -35,7 +35,6 @@ public class ResponsabiliteRest {
     public List<Responsabilite> findAll() {
         return responsabiliteService.findAll();
     }
-    @Transactional
     @PostMapping("/")
     public int save(@RequestBody Responsabilite responsabilite) {
         return responsabiliteService.save(responsabilite);

@@ -24,7 +24,6 @@ public class EmployeRest {
     }
 
     @DeleteMapping("/cin/{cin}")
-    @Transactional
     public int deleteByCin(@PathVariable String cin) {
         return employeService.deleteByCin(cin);
     }

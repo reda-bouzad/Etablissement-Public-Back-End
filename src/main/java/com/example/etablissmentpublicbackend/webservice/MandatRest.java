@@ -25,7 +25,6 @@ public class MandatRest  {
     public List<Mandat> findAll() {
         return mandatService.findAll();
     }
-    @Transactional
     @PostMapping("/")
     public int save(@RequestBody Mandat mandat) {
         return mandatService.save(mandat);
