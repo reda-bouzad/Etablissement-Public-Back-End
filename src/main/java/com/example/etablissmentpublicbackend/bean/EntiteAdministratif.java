@@ -9,7 +9,7 @@ public class EntiteAdministratif {
     private String code;
     private String libelle;
     @ManyToOne
-    private Employe ChefEntite;
+    private Employe chefEntite;
 
     public Long getId() {
         return id;
@@ -36,10 +36,10 @@ public class EntiteAdministratif {
     }
 
     public Employe getChefEntite() {
-        return ChefEntite;
+        return chefEntite;
     }
 
     public void setChefEntite(Employe chefEntite) {
-        ChefEntite = chefEntite;
+        chefEntite = chefEntite;
     }
 }

@@ -9,9 +9,9 @@ public class Responsabilite {
     private Long id;
     private String libelle;
     private String code;
-    @OneToOne
+    @ManyToOne
     private Echellon echellon;
-    @OneToOne
+    @ManyToOne
     private Echellon echellon_min;
     private Double prime;
 

@@ -14,13 +14,10 @@ public class Mandat {
     private Date date_debut;
     private Date date_fin;
 
-
-    /*private Employe employe;*/
-
-    @OneToOne
+    @ManyToOne
     private Employe employe;
 
-    @ManyToOne
+    @OneToOne
     private Responsabilite responsabilite;
 
     public Long getId() {

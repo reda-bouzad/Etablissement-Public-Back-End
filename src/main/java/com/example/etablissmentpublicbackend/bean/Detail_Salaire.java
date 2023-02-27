@@ -14,7 +14,7 @@ public class Detail_Salaire {
     private Double prime_responsabilité;
     private Double prime_generale;
     @ManyToOne
-     private Employe employe;
+    private Employe employe;
 
     public Long getId() {
         return id;
