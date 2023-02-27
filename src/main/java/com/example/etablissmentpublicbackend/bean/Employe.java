@@ -14,14 +14,14 @@ public class Employe {
     @ManyToOne
     private EntiteAdministratif entiteAdministratif;
     private Double salaireDeBase;
-    private Long nombre_mois;
+    private Long nombreMois;
 
-    public Long getNombre_mois() {
-        return nombre_mois;
+    public Long getNombreMois() {
+        return nombreMois;
     }
 
-    public void setNombre_mois(Long nombre_mois) {
-        this.nombre_mois = nombre_mois;
+    public void setNombreMois(Long nombre_mois) {
+        this.nombreMois = nombre_mois;
     }
 
     public Long getId() {

@@ -12,7 +12,7 @@ public class Responsabilite {
     @ManyToOne
     private Echellon echellon;
     @ManyToOne
-    private Echellon echellon_min;
+    private Echellon echellonMin;
     private Double prime;
 
     public Long getId() {
@@ -55,11 +55,11 @@ public class Responsabilite {
         this.echellon = echellon;
     }
 
-    public Echellon getEchellon_min() {
-        return echellon_min;
+    public Echellon getEchellonMin() {
+        return echellonMin;
     }
 
-    public void setEchellon_min(Echellon echellon_min) {
-        this.echellon_min = echellon_min;
+    public void setEchellonMin(Echellon echellon_min) {
+        this.echellonMin = echellon_min;
     }
 }

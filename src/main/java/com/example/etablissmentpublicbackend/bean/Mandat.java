@@ -11,8 +11,8 @@ public class Mandat {
     private Long id;
     private String code;
     private Double prime;
-    private Date date_debut;
-    private Date date_fin;
+    private Date dateDebut;
+    private Date dateFin;
 
     @ManyToOne
     private Employe employe;
@@ -36,20 +36,20 @@ public class Mandat {
         this.prime = prime;
     }
 
-    public Date getDate_debut() {
-        return date_debut;
+    public Date getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDate_debut(Date date_debut) {
-        this.date_debut = date_debut;
+    public void setDateDebut(Date date_debut) {
+        this.dateDebut = date_debut;
     }
 
-    public Date getDate_fin() {
-        return date_fin;
+    public Date getDateFin() {
+        return dateFin;
     }
 
-    public void setDate_fin(Date date_fin) {
-        this.date_fin = date_fin;
+    public void setDateFin(Date date_fin) {
+        this.dateFin = date_fin;
     }
 
     public Responsabilite getResponsabilite() {

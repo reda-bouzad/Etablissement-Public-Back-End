@@ -1,6 +1,5 @@
 package com.example.etablissmentpublicbackend.bean;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 @Entity
 public class Echellon {
@@ -14,10 +13,10 @@ public class Echellon {
     private Double montant;
     @JsonBackReference
     @OneToOne
-    private Echellon echellon_suivant;
+    private Echellon echellonSuivant;
     @JsonBackReference
     @OneToOne
-    private Echellon echellon_precedant;
+    private Echellon echellonPrecedant;
     private Long delai;
 
     public Long getId() {
@@ -52,20 +51,20 @@ public class Echellon {
         this.montant = montant;
     }
 
-    public Echellon getEchellon_suivant() {
-        return echellon_suivant;
+    public Echellon getEchellonSuivant() {
+        return echellonSuivant;
     }
 
-    public void setEchellon_suivant(Echellon echellon_suivant) {
-        this.echellon_suivant = echellon_suivant;
+    public void setEchellonSuivant(Echellon echellon_suivant) {
+        this.echellonSuivant = echellon_suivant;
     }
 
-    public Echellon getEchellon_precedant() {
-        return echellon_precedant;
+    public Echellon getEchellonPrecedant() {
+        return echellonPrecedant;
     }
 
-    public void setEchellon_precedant(Echellon echellon_precedant) {
-        this.echellon_precedant = echellon_precedant;
+    public void setEchellonPrecedant(Echellon echellon_precedant) {
+        this.echellonPrecedant = echellon_precedant;
     }
 
     public Long getDelai() {

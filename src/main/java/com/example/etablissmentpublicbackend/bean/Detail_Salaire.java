@@ -10,9 +10,9 @@ public class Detail_Salaire {
     private Long id;
     private String code;
     private String date;      //format(dd--mm-yy)
-    private Double salaire_base;
-    private Double prime_responsabilité;
-    private Double prime_generale;
+    private Double salaireBase;
+    private Double primeResponsabilite;
+    private Double primeGenerale;
     @ManyToOne
     private Employe employe;
 
@@ -32,28 +32,28 @@ public class Detail_Salaire {
         this.date = date;
     }
 
-    public Double getSalaire_base() {
-        return salaire_base;
+    public Double getSalaireBase() {
+        return salaireBase;
     }
 
-    public void setSalaire_base(Double salaire_base) {
-        this.salaire_base = salaire_base;
+    public void setSalaireBase(Double salaire_base) {
+        this.salaireBase = salaire_base;
     }
 
-    public Double getPrime_responsabilité() {
-        return prime_responsabilité;
+    public Double getPrimeResponsabilite() {
+        return primeResponsabilite;
     }
 
-    public void setPrime_responsabilité(Double prime_responsabilité) {
-        this.prime_responsabilité = prime_responsabilité;
+    public void setPrimeResponsabilite(Double prime_responsabilité) {
+        this.primeResponsabilite = prime_responsabilité;
     }
 
-    public Double getPrime_generale() {
-        return prime_generale;
+    public Double getPrimeGenerale() {
+        return primeGenerale;
     }
 
-    public void setPrime_generale(Double prime_generale) {
-        this.prime_generale = prime_generale;
+    public void setPrimeGenerale(Double prime_generale) {
+        this.primeGenerale = prime_generale;
     }
 
     public Employe getEmploye() {
