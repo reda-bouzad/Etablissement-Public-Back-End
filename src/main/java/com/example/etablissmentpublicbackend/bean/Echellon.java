@@ -11,7 +11,8 @@ public class Echellon {
     private Long id;
     private String code;
     private String libelle;
-    /* private Echelle echelle */
+    @ManyToOne
+    private Echelle echelle;
     private Double montant;
     @JsonBackReference
     @OneToOne
