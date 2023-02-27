@@ -2,22 +2,19 @@ package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
 
 @Entity
 public class Detail_Salaire {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String libelle;
     private String code;
-    private Date date;
+    private String date;      //format(dd--mm-yy)
     private Double salaire_base;
     private Double prime_responsabilité;
     private Double prime_generale;
-    /* private Responsabilté responsabilté;
     @ManyToOne
-     private Employe employe; */
+     private Employe employe;
 
     public Long getId() {
         return id;
@@ -27,11 +24,11 @@ public class Detail_Salaire {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -59,20 +56,12 @@ public class Detail_Salaire {
         this.prime_generale = prime_generale;
     }
 
-    /*public Employe getEmploye() {
+    public Employe getEmploye() {
         return employe;
     }
 
     public void setEmploye(Employe employe) {
         this.employe = employe;
-    } */
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
     }
 
     public String getCode() {

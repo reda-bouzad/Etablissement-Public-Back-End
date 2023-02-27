@@ -1,9 +1,7 @@
 package com.example.etablissmentpublicbackend.bean;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 @Entity
 public class Echellon {
     @Id
@@ -11,7 +9,8 @@ public class Echellon {
     private Long id;
     private String code;
     private String libelle;
-    /* private Echelle echelle */
+    @ManyToOne
+    private Echelle echelle;
     private Double montant;
     @JsonBackReference
     @OneToOne

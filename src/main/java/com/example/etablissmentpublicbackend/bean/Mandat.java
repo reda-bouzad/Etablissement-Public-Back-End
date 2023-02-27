@@ -13,7 +13,7 @@ public class Mandat {
     private Double prime;
     private Date date_debut;
     private Date date_fin;
-    /* private Employe employe; */
+    /*private Employe employe;*/
     @ManyToOne
     private Responsabilite responsabilite;
 
