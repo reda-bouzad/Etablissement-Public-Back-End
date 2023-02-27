@@ -30,8 +30,14 @@ public class Detail_SalaireService {
     }
 
     public int save(Detail_Salaire detailSalaire){
-        detailSalaireDao.save(detailSalaire);
-        return 1;
+        if (findByCode(detailSalaire.getCode()) != null) {
+            return -1;
+        }
+        else{
+            detailSalaireDao.save(detailSalaire);
+            return 1;
+        }
+
     }
 
 }

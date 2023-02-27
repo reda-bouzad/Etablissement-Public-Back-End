@@ -25,8 +25,12 @@ public class MandatService {
     }
 
     public int save(Mandat mandat){
-        mandatDao.save(mandat);
-        return 1;
+        if (findByCode(mandat.getCode()) != null) {
+            return -1;
+        }else{
+            mandatDao.save(mandat);
+            return 1;
+        }
     }
 
 }

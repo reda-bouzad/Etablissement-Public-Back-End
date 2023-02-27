@@ -25,8 +25,13 @@ public class EchellonService  {
     }
 
     public int save(Echellon echellon) {
-        echellonDao.save(echellon);
-        return 1;
+        if (findByCode(echellon.getCode()) != null) {
+            return -1;
+        }else{
+            echellonDao.save(echellon);
+            return 1;
+        }
+
     }
 
 }

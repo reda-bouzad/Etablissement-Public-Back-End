@@ -29,7 +29,11 @@ public class ResponsabiliteService {
         return responsabiliteDao.findAll();
     }
     public int save(Responsabilite responsabilite){
-        responsabiliteDao.save(responsabilite);
-        return 1;
+        if (findByCode(responsabilite.getCode()) != null) {
+            return -1;
+        }else{
+            responsabiliteDao.save(responsabilite);
+            return 1;
+        }
     }
 }
