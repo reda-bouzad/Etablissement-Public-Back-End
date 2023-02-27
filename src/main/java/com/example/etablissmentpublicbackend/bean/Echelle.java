@@ -1,9 +1,6 @@
 package com.example.etablissmentpublicbackend.bean;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Echelle {
@@ -12,7 +9,8 @@ public class Echelle {
     private Long id;
     private String libelle;
     private String code;
-    /* private Grade grade */
+    @ManyToOne
+    private Grade grade;
 
     public Long getId() {
         return id;
@@ -36,5 +34,13 @@ public class Echelle {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 }

@@ -1,9 +1,6 @@
 package com.example.etablissmentpublicbackend.bean;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Responsabilite {
@@ -12,8 +9,10 @@ public class Responsabilite {
     private Long id;
     private String libelle;
     private String code;
-    /* private Echelon echelon  */
-    /* private Echelon echelon_min */
+    @OneToOne
+    private Echellon echellon;
+    @OneToOne
+    private Echellon echellon_min;
     private Double prime;
 
     public Long getId() {
@@ -46,5 +45,21 @@ public class Responsabilite {
 
     public void setPrime(Double prime) {
         this.prime = prime;
+    }
+
+    public Echellon getEchellon() {
+        return echellon;
+    }
+
+    public void setEchellon(Echellon echellon) {
+        this.echellon = echellon;
+    }
+
+    public Echellon getEchellon_min() {
+        return echellon_min;
+    }
+
+    public void setEchellon_min(Echellon echellon_min) {
+        this.echellon_min = echellon_min;
     }
 }

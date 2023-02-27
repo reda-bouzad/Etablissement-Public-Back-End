@@ -27,7 +27,7 @@ public class MandatRest  {
     }
     @Transactional
     @PostMapping("/")
-    public int save(Mandat mandat) {
+    public int save(@RequestBody Mandat mandat) {
         return mandatService.save(mandat);
     }
 }

@@ -36,4 +36,5 @@ public class Grade {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
 }

@@ -28,7 +28,7 @@ public class EchellonRest {
     }
     @Transactional
     @PostMapping("/")
-    public int save(Echellon echellon) {
+    public int save(@RequestBody Echellon echellon) {
         return echellonService.save(echellon);
     }
 }

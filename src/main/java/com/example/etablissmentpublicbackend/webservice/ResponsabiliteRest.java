@@ -37,7 +37,7 @@ public class ResponsabiliteRest {
     }
     @Transactional
     @PostMapping("/")
-    public int save(Responsabilite responsabilite) {
+    public int save(@RequestBody Responsabilite responsabilite) {
         return responsabiliteService.save(responsabilite);
     }
 }

@@ -9,11 +9,21 @@ public class Employe {
     private String cin;
     private String nom;
     private String prenom;
-    //@ManyToOne
-    //private Echelon echelon;
+    @ManyToOne
+    private Echellon echellon;
     @ManyToOne
     private EntiteAdministratif entiteAdministratif;
     private Double salaireDeBase;
+    private Long nombre_mois;
+    @ManyToOne
+    private Responsabilite responsabilite;
+    public Long getNombre_mois() {
+        return nombre_mois;
+    }
+
+    public void setNombre_mois(Long nombre_mois) {
+        this.nombre_mois = nombre_mois;
+    }
 
     public Long getId() {
         return id;
@@ -47,13 +57,13 @@ public class Employe {
         this.prenom = prenom;
     }
 
-    /*public Echelon getEchelon() {
-        return echelon;
-    }*/
+    public Echellon getEchellon() {
+        return echellon;
+    }
 
-    /*public void setEchelon(Echelon echelon) {
-        this.echelon = echelon;
-    }*/
+    public void setEchellon(Echellon echellon) {
+        this.echellon = echellon;
+    }
 
     public EntiteAdministratif getEntiteAdministratif() {
         return entiteAdministratif;
@@ -70,4 +80,13 @@ public class Employe {
     public void setSalaireDeBase(Double salaireDeBase) {
         this.salaireDeBase = salaireDeBase;
     }
+
+    public Responsabilite getResponsabilite() {
+        return responsabilite;
+    }
+
+    public void setResponsabilite(Responsabilite responsabilite) {
+        this.responsabilite = responsabilite;
+    }
 }
+

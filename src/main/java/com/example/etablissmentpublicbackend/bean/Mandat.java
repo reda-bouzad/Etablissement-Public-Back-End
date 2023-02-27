@@ -13,7 +13,13 @@ public class Mandat {
     private Double prime;
     private Date date_debut;
     private Date date_fin;
+
+
     /*private Employe employe;*/
+
+    @OneToOne
+    private Employe employe;
+
     @ManyToOne
     private Responsabilite responsabilite;
 
@@ -64,4 +70,13 @@ public class Mandat {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
+
 }

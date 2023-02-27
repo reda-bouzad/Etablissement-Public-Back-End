@@ -29,7 +29,7 @@ public class Detail_SalaireRest {
     }
     @Transactional
     @PostMapping("/")
-    public int save(Detail_Salaire detailSalaire) {
+    public int save(@RequestBody Detail_Salaire detailSalaire) {
         return detailSalaireService.save(detailSalaire);
     }
 }
