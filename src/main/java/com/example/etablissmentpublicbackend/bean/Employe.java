@@ -15,7 +15,8 @@ public class Employe {
     private EntiteAdministratif entiteAdministratif;
     private Double salaireDeBase;
     private Long nombre_mois;
-
+    @ManyToOne
+    private Responsabilite responsabilite;
     public Long getNombre_mois() {
         return nombre_mois;
     }
