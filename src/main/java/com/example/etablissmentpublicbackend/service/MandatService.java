@@ -1,7 +1,9 @@
 package com.example.etablissmentpublicbackend.service;
 
+import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Mandat;
 import com.example.etablissmentpublicbackend.dao.MandatDao;
+import jakarta.persistence.OneToOne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,15 @@ public class MandatService {
         }else{
             mandatDao.save(mandat);
             return 1;
+        }
+    }
+    public int ResponsabiliteValidate(String code){
+        Mandat mandat = mandatDao.findByCode(code);
+        if(mandat.getResponsabilite()==null){
+            return -1;
+        }else{
+
+           return 1;
         }
     }
 
