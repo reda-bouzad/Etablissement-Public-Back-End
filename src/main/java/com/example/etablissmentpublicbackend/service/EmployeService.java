@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeService {
     @Autowired
     private EmployeDao employeDao;
+
 
     public Employe findByCin(String cin) {
         return employeDao.findByCin(cin);
@@ -40,7 +42,7 @@ public class EmployeService {
     }
 
 
-
-
-
+    public Optional<Employe> findById(Long aLong) {
+        return employeDao.findById(aLong);
+    }
 }

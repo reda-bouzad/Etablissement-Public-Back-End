@@ -43,7 +43,7 @@ public class ResponsabiliteRest {
     }
     @PutMapping("/update/{responsabilite_id}")
     public ResponseEntity<String> updateName(@PathVariable Long responsabilite_id, @RequestBody Employe employe) {
-        responsabiliteService.updateResponsability(responsabilite_id , employe);
+        responsabiliteService.updateResponsabilite(responsabilite_id , employe);
         return ResponseEntity.ok("Entity updated successfully");
     }
 }
