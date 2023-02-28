@@ -1,5 +1,6 @@
 package com.example.etablissmentpublicbackend.service;
 
+import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Responsabilite;
 import com.example.etablissmentpublicbackend.dao.ResponsabiliteDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import java.util.List;
 public class ResponsabiliteService {
     @Autowired
     private ResponsabiliteDao responsabiliteDao;
+    @Autowired
+    private EmployeService employeService;
     public Responsabilite findByLibelle(String libelle) {
         return responsabiliteDao.findByLibelle(libelle);
     }
@@ -36,4 +39,6 @@ public class ResponsabiliteService {
             return 1;
         }
     }
+
+
 }

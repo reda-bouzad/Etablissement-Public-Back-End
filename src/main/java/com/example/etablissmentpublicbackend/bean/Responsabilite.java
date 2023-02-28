@@ -13,6 +13,8 @@ public class Responsabilite {
     private Echellon echellon;
     @ManyToOne
     private Echellon echellonMin;
+    @OneToOne
+    private Employe employe;
     private Double prime;
 
     public Long getId() {
@@ -61,5 +63,13 @@ public class Responsabilite {
 
     public void setEchellonMin(Echellon echellon_min) {
         this.echellonMin = echellon_min;
+    }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
     }
 }
