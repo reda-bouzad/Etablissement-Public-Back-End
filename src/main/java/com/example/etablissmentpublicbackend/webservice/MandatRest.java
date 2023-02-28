@@ -16,6 +16,10 @@ public class MandatRest  {
     public Mandat findByCode(@PathVariable String code) {
         return mandatService.findByCode(code);
     }
+    @GetMapping("/responsabilite/{code}")
+    public int VerifierResponsabilite(@PathVariable String code){
+        return mandatService.VerifierResponsabilite(code);
+    }
     @Transactional
     @DeleteMapping("/code/{code}")
     public int deleteByCode(@PathVariable String code) {
