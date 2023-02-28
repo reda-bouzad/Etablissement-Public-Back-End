@@ -1,9 +1,11 @@
 package com.example.etablissmentpublicbackend.webservice;
 
+import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Responsabilite;
 import com.example.etablissmentpublicbackend.service.ResponsabiliteService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +40,10 @@ public class ResponsabiliteRest {
     @PostMapping("/")
     public int save(@RequestBody Responsabilite responsabilite) {
         return responsabiliteService.save(responsabilite);
+    }
+    @PutMapping("/update/{responsabilite_id}")
+    public ResponseEntity<String> updateName(@PathVariable Long responsabilite_id, @RequestBody Employe employe) {
+        responsabiliteService.updateResponsability(responsabilite_id , employe);
+        return ResponseEntity.ok("Entity updated successfully");
     }
 }

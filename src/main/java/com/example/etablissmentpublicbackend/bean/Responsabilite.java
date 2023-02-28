@@ -10,10 +10,10 @@ public class Responsabilite {
     private String libelle;
     private String code;
     @ManyToOne
-    private Echellon echellon;
-    @ManyToOne
     private Echellon echellonMin;
-    @OneToOne
+    @OneToOne(
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
     private Employe employe;
     private Double prime;
 
@@ -49,13 +49,7 @@ public class Responsabilite {
         this.prime = prime;
     }
 
-    public Echellon getEchellon() {
-        return echellon;
-    }
 
-    public void setEchellon(Echellon echellon) {
-        this.echellon = echellon;
-    }
 
     public Echellon getEchellonMin() {
         return echellonMin;

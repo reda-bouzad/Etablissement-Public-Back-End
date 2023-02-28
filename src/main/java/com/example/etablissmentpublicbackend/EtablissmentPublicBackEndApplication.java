@@ -12,9 +12,6 @@ public class EtablissmentPublicBackEndApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EtablissmentPublicBackEndApplication.class, args);
-		EmployeService service = new EmployeService();
-		service.findByCin("C1");
-
 	}
 
 

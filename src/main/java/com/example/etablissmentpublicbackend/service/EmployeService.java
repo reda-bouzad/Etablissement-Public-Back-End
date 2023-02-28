@@ -35,8 +35,6 @@ public class EmployeService {
         return employeDao.findAll();
     }
 
-    public void findEmployeByCin(String cin) {
-        Employe employe = employeDao.findByCin(cin);
-        System.out.println(employe);
-    }
+
+
 }

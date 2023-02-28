@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ResponsabiliteService {
@@ -40,5 +41,17 @@ public class ResponsabiliteService {
         }
     }
 
+    /* public Employe add_Responsabilite(String cin){
+        Employe employe =  employeService.findByCin(cin);
+        return employe;
+    } */
 
+    public void updateResponsability(Long responsabiliteId , Employe employe){
+        Optional<Responsabilite> optionalResponsabilite = responsabiliteDao.findById(responsabiliteId);
+        if (optionalResponsabilite.isPresent()){
+            Responsabilite responsabilite = optionalResponsabilite.get();
+            responsabilite.setEmploye(employe);
+            responsabiliteDao.save(responsabilite);
+        }
+    }
 }
