@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class EntiteAdministratif {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String code;
     private String libelle;

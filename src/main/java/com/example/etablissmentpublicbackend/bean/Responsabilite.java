@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class Responsabilite {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String libelle;
     private String code;

@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 public class Mandat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String code;
     private Double prime;

@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 public class Employe {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String cin;
     private String nom;
@@ -79,6 +80,8 @@ public class Employe {
     public void setSalaireDeBase(Double salaireDeBase) {
         this.salaireDeBase = salaireDeBase;
     }
+
+
 
 
 }

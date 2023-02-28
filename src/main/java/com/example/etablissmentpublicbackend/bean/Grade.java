@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Grade {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String code;
     private String libelle;

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Entity
 public class Detail_Salaire {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String code;
     private String date;      //format(dd--mm-yy)

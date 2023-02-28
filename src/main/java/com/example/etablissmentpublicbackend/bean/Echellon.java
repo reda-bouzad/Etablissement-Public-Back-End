@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 @Entity
 public class Echellon {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String code;
     private String libelle;
