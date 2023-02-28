@@ -23,6 +23,11 @@ public class EmployeRest {
         return employeService.save(employe);
     }
 
+    @GetMapping("/count")
+    public long count() {
+        return employeService.count();
+    }
+
     @DeleteMapping("/cin/{cin}")
     public int deleteByCin(@PathVariable String cin) {
         return employeService.deleteByCin(cin);

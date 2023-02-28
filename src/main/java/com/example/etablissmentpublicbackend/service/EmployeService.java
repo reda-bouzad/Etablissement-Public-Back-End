@@ -26,6 +26,10 @@ public class EmployeService {
         }
     }
 
+    public long count() {
+        return employeDao.count();
+    }
+
     @Transactional
     public int deleteByCin(String cin) {
         return employeDao.deleteByCin(cin);
