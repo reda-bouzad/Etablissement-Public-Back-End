@@ -34,7 +34,7 @@ public class MandatService {
             return 1;
         }
     }
-    public int ResponsabiliteValidate(String code){
+    public int VerifierResponsabilite(String code){
         Mandat mandat = mandatDao.findByCode(code);
         if(mandat.getResponsabilite()==null){
             return -1;
