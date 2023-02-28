@@ -43,4 +43,6 @@ public class Echelle {
     public void setGrade(Grade grade) {
         this.grade = grade;
     }
+
+
 }

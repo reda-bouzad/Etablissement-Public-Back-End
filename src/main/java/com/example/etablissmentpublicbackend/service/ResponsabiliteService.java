@@ -70,6 +70,9 @@ public class ResponsabiliteService {
                     if (responsabilite.getEmploye() != null && !responsabilite.getEmploye().equals(updatedEmploye)) {
                         throw new IllegalArgumentException("This responsibility is already assigned to another employee.");
                     }
+                    if (updatedEmploye.getEchellon().getId() < responsabilite.getEchellonMin().getId()) {
+                        throw new IllegalArgumentException("This employee's echelle is not sufficient for this responsibility.");
+                    }
                     EntityManager entityManager = entityManagerFactory.createEntityManager();
                     entityManager.getTransaction().begin();
                     try {
@@ -98,5 +101,6 @@ public class ResponsabiliteService {
             throw new IllegalArgumentException(String.valueOf(employe.getId()));
         }
     }
+
 
 }
