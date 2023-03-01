@@ -4,7 +4,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,29 +12,26 @@ import java.util.Date;
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 36 10 * * ?")
-    public void backupFunction() {
+    @Scheduled(cron = "0 47 15 * * ?")
+    public void backupFunction() throws IOException{
 
         System.out.println("Backup Started at " + new Date());
 
         Date backupDate = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        String backupDateStr = format.format(backupDate);
-
+        String backupDateString = format.format(backupDate);
         String nomFichier = "Daily_DB_Backup"; //nom par defaut
-        String cheminDossier = "C:\\BackupSpringApp";  /*le dossier de backup
-        /*File f1 = new File(folderPath);
-        f1.mkdir(); // create folder if not exist*/
+        String cheminDossier = "C:\\Users\\elqar\\BackupAppSpring";  //le dossier de backup
 
-        String saveNomFichier = nomFichier + "_" + backupDateStr + ".sql";
-        String saveChemin = cheminDossier + File.separator + saveNomFichier;
-        /*String firstCommand="cd C:\\xampp1\\mysql\\bin";*/
 
-        String executeCmd ="C:\\xampp1\\mysql\\bin\\mysql.exe -u" + "root" + " -p" + "" + " --database " + "etablissementpublic" + ">" + saveChemin;
+        String saveNomFichier = nomFichier + "_" + backupDateString + ".sql";
+        String saveChemin = cheminDossier + "\\" + saveNomFichier;
+
+        String backUpCmd ="cmd /c mysqldump -u root etablissementpublic >"+" "+saveChemin;
 
         Process runtimeProcess = null;
         try {
-            runtimeProcess = Runtime.getRuntime().exec(executeCmd);
+            runtimeProcess = Runtime.getRuntime().exec(backUpCmd);
         } catch (IOException e) {
             e.printStackTrace();
         }
