@@ -33,5 +33,13 @@ public class EchellonService  {
         }
 
     }
+    public Double findMontant(String codeEchlon){
+        Echellon echellon=echellonDao.findByCode(codeEchlon);
+        if(echellon==null){
+            return null;
+        }else{
+            return echellon.getMontant();
+        }
+    }
 
 }
