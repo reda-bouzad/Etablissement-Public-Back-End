@@ -34,4 +34,8 @@ public class MandatRest  {
     public int save(@RequestBody Mandat mandat) {
         return mandatService.save(mandat);
     }
+    @PutMapping("/updateSalaire")
+    public int updateSalaire(@RequestBody Mandat mandat) {
+        return mandatService.updateSalaire(mandat);
+    }
 }

@@ -13,6 +13,9 @@ import java.util.List;
 public class MandatService {
     @Autowired
     private MandatDao mandatDao;
+    @Autowired
+    private EmployeService employeService;
+
 
     public Mandat findByCode(String code) {
         return mandatDao.findByCode(code);
@@ -42,6 +45,17 @@ public class MandatService {
 
            return 1;
         }
+    }
+    public int updateSalaire(Mandat mandat) {
+        Mandat dbmandat = mandatDao.findByCode(mandat.getCode());
+        if (dbmandat == null || mandat.getResponsabilite()==null) {
+            return -1;
+        }
+        Employe employe = dbmandat.getEmploye();
+        employe.setSalaireDeBase(dbmandat.getEmploye().getSalaireDeBase() + dbmandat.getResponsabilite().getPrime());
+        employeService.save(employe);
+        mandatDao.save(dbmandat);
+        return 1;
     }
 
 }
