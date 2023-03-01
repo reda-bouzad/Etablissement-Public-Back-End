@@ -1,5 +1,6 @@
 package com.example.etablissmentpublicbackend.webservice;
 
+import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
 import com.example.etablissmentpublicbackend.service.EntiteAdministratifService;
 import jakarta.transaction.Transactional;
@@ -22,6 +23,12 @@ public class EntiteAdministratifRest {
     public int save(@RequestBody EntiteAdministratif entiteAdministratif) {
         return entiteAdministratifService.save(entiteAdministratif);
     }
+
+    @GetMapping("/codeEntite/{codeEntite}")
+    public Employe findChef(@PathVariable String codeEntite) {
+        return entiteAdministratifService.findChef(codeEntite);
+    }
+
     @DeleteMapping("/code/{code}")
     @Transactional
     public int deleteByCode(@PathVariable String code) {

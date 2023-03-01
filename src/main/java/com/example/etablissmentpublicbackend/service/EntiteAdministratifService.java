@@ -1,5 +1,6 @@
 package com.example.etablissmentpublicbackend.service;
 
+import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
 import com.example.etablissmentpublicbackend.dao.EntiteAdministratifDao;
 import jakarta.transaction.Transactional;
@@ -25,6 +26,19 @@ public class EntiteAdministratifService {
             return 1;
         }
     }
+
+    public Employe findChef(String codeEntite){
+
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntite);
+        if (entiteAdministratif == null) {
+            return null;
+
+        }else{
+            return entiteAdministratif.getChefEntite();
+        }
+
+    }
+
     @Transactional
     public int deleteByCode(String code) {
         return entiteAdministratifDao.deleteByCode(code);
