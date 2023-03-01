@@ -2,6 +2,7 @@ package com.example.etablissmentpublicbackend.service;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
+import com.example.etablissmentpublicbackend.dao.EmployeDao;
 import com.example.etablissmentpublicbackend.dao.EntiteAdministratifDao;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.List;
 public class EntiteAdministratifService {
     @Autowired
     private EntiteAdministratifDao entiteAdministratifDao;
+
+    private EmployeService employeService;
 
     public EntiteAdministratif findByCode(String code) {
         return entiteAdministratifDao.findByCode(code);
@@ -38,6 +41,8 @@ public class EntiteAdministratifService {
         }
 
     }
+
+
 
     @Transactional
     public int deleteByCode(String code) {
