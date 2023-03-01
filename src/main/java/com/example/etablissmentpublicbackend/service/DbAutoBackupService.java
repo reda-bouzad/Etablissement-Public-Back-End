@@ -13,26 +13,25 @@ import java.util.Date;
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 54 21 * * ?")
-    public void schedule() {
+    @Scheduled(cron = "0 36 10 * * ?")
+    public void backupFunction() {
 
         System.out.println("Backup Started at " + new Date());
 
         Date backupDate = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String backupDateStr = format.format(backupDate);
-        String dbNameList = "etablissementpublic";
 
-        String fileName = "Daily_DB_Backup"+"_"+new Date(); // default file name
-        String folderPath = "C:\\BackupSpringApp";
-        File f1 = new File(folderPath);
-        f1.mkdir(); // create folder if not exist
+        String nomFichier = "Daily_DB_Backup"; //nom par defaut
+        String cheminDossier = "C:\\BackupSpringApp";  /*le dossier de backup
+        /*File f1 = new File(folderPath);
+        f1.mkdir(); // create folder if not exist*/
 
-        String saveFileName = fileName + "_" + backupDateStr + ".sql";
-        String savePath = folderPath + File.separator + saveFileName;
+        String saveNomFichier = nomFichier + "_" + backupDateStr + ".sql";
+        String saveChemin = cheminDossier + File.separator + saveNomFichier;
+        /*String firstCommand="cd C:\\xampp1\\mysql\\bin";*/
 
-        String executeCmd = "mysqldump -u "+ "root" + " -p"+ "  --databases " + dbNameList
-                + " -r " + savePath;
+        String executeCmd ="C:\\xampp1\\mysql\\bin\\mysql.exe -u" + "root" + " -p" + "" + " --database " + "etablissementpublic" + ">" + saveChemin;
 
         Process runtimeProcess = null;
         try {
