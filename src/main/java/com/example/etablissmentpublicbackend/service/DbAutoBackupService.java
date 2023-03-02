@@ -12,7 +12,7 @@ import java.util.Date;
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 55 13 * * ?")
+    @Scheduled(cron = "0 17 20 * * ?")
     public void backupFunction(){
 
         System.out.println("Backup Started at " + new Date());
@@ -38,6 +38,7 @@ public class DbAutoBackupService {
         int processComplete = 0;
         try {
             processComplete = runtimeProcess.waitFor();
+            System.out.println("process status code"+ processComplete);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
