@@ -12,7 +12,7 @@ import java.util.Date;
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 11 09 * * ?")
+    @Scheduled(cron = "0 55 13 * * ?")
     public void backupFunction(){
 
         System.out.println("Backup Started at " + new Date());
@@ -22,13 +22,13 @@ public class DbAutoBackupService {
         String backupDateString = format.format(backupDate);
         String nomFichier = "Daily_DB_Backup"; //nom par defaut
         String cheminDossier = "C:\\Users\\elqar\\BackupAppSpring";  //le dossier de backup
-
+        //change path to ur root folder(admin actuel) otherwise u cant access to the DB sql file!!!!
 
         String saveNomFichier = nomFichier + "_" + backupDateString + ".sql";
         String saveChemin = cheminDossier + "\\" + saveNomFichier;
 
         String backUpCmd ="cmd /c mysqldump -u root etablissementpublic >"+" "+saveChemin;
-
+        //pour linux on utilise /bin/sh -c au lieu de cmd /c
         Process runtimeProcess = null;
         try {
             runtimeProcess = Runtime.getRuntime().exec(backUpCmd);
