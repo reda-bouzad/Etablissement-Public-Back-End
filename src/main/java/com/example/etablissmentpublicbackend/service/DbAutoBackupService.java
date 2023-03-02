@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+
 @Service
 @EnableScheduling
 public class DbAutoBackupService {
@@ -15,7 +17,7 @@ public class DbAutoBackupService {
     @Scheduled(cron = "0 17 20 * * ?")
     public void backupFunction(){
 
-        System.out.println("Backup Started at " + new Date());
+       System.out.println("Backup Started at " + new Date());
 
         Date backupDate = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -30,6 +32,7 @@ public class DbAutoBackupService {
         String backUpCmd ="cmd /c mysqldump -u root etablissementpublic >"+" "+saveChemin;
         //pour linux on utilise /bin/sh -c au lieu de cmd /c
         Process runtimeProcess = null;
+
         try {
             runtimeProcess = Runtime.getRuntime().exec(backUpCmd);
         } catch (IOException e) {
@@ -38,7 +41,7 @@ public class DbAutoBackupService {
         int processComplete = 0;
         try {
             processComplete = runtimeProcess.waitFor();
-            System.out.println("process status code"+ processComplete);
+            System.out.println("process status code"+" " +processComplete);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
