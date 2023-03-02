@@ -12,8 +12,8 @@ import java.util.Date;
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 47 15 * * ?")
-    public void backupFunction() throws IOException{
+    @Scheduled(cron = "0 11 09 * * ?")
+    public void backupFunction(){
 
         System.out.println("Backup Started at " + new Date());
 
