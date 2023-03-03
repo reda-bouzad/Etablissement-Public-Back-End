@@ -1,8 +1,11 @@
 package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@EntityListeners(ResponsabiliteListener.class)
+
 public class Responsabilite {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -69,3 +72,32 @@ public class Responsabilite {
         this.employe = employe;
     }
 }
+@Component
+class ResponsabiliteListener {
+
+    @PreUpdate
+    public void beforeResponsabiliteUpdate(Responsabilite responsabilite) {
+        // Code to execute before updating an employee entity
+        System.out.println("Responsabilite " + responsabilite.getCode() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterResponsabiliteUpdate(Responsabilite responsabilite) {
+        // Code to execute after updating an employee entity
+        System.out.println("Responsabilite " + responsabilite.getCode() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeResponsabiliteDelete(Responsabilite responsabilite) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Responsabilite " + responsabilite.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterResponsabiliteDelete(Responsabilite responsabilite) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Responsabilite " + responsabilite.getCode() + " has been deleted");
+    }
+}
+
+

@@ -1,10 +1,13 @@
 package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Entity
+@EntityListeners(MandatListener.class)
+
 public class Mandat {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -77,3 +80,31 @@ public class Mandat {
     }
 
 }
+@Component
+class MandatListener {
+
+    @PreUpdate
+    public void beforeMandatUpdate(Mandat mandat) {
+        // Code to execute before updating an employee entity
+        System.out.println("Mandat " + mandat.getCode() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterMandatUpdate(Mandat mandat) {
+        // Code to execute after updating an employee entity
+        System.out.println("Mandat " + mandat.getCode() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeMandatDelete(Mandat mandat) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Mandat " + mandat.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterMandatDelete(Mandat mandat) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Mandat " + mandat.getCode() + " has been deleted");
+    }
+}
+
