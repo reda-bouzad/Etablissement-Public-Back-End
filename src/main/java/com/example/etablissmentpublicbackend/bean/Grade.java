@@ -37,6 +37,4 @@ public class Grade {
         this.libelle = libelle;
     }
 
-
-
 }

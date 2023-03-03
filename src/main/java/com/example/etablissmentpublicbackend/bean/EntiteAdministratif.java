@@ -1,8 +1,11 @@
 package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@EntityListeners(EntiteAdministratifListener.class)
+
 public class EntiteAdministratif {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -41,5 +44,32 @@ public class EntiteAdministratif {
 
     public void setChefEntite(Employe chefEntite) {
         chefEntite = chefEntite;
+    }
+}
+@Component
+class EntiteAdministratifListener {
+
+    @PreUpdate
+    public void beforeEnriteAdministratifUpdate(EntiteAdministratif entiteAdministratif) {
+        // Code to execute before updating an employee entity
+        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterEnriteAdministratifUpdate(EntiteAdministratif entiteAdministratif) {
+        // Code to execute after updating an employee entity
+        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeEnriteAdministratifDelete(EntiteAdministratif entiteAdministratif) {
+        // Code to execute before deleting an employee entity
+        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterEnriteAdministratifDelete(EntiteAdministratif entiteAdministratif) {
+        // Code to execute after deleting an employee entity
+        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " has been deleted");
     }
 }
