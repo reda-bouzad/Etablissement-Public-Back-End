@@ -18,6 +18,10 @@ public class MandatRest  {
     }
     @GetMapping("/responsabilite/{code}")
     public int VerifierResponsabilite(@PathVariable String code){
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Abdelillah_branch
         return mandatService.VerifierResponsabilite(code);
     }
     @Transactional
@@ -32,5 +36,9 @@ public class MandatRest  {
     @PostMapping("/")
     public int save(@RequestBody Mandat mandat) {
         return mandatService.save(mandat);
+    }
+    @PutMapping("/updateSalaire")
+    public int updateSalaire(@RequestBody Mandat mandat) {
+        return mandatService.updateSalaire(mandat);
     }
 }
