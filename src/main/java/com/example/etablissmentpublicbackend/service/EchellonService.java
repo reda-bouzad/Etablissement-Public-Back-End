@@ -41,5 +41,22 @@ public class EchellonService  {
             return echellon.getMontant();
         }
     }
+    public Echellon findEchlonSuivant(String codeEchlonS){
+        Echellon echellon=echellonDao.findByCode(codeEchlonS);
+        if(echellon==null){
+            return null;
+        }else{
+            return echellon.getEchellonSuivant();
+
+        }
+    }
+    public Echellon findEchlonPrecedant(String codeEchlonP){
+        Echellon echellon=echellonDao.findByCode(codeEchlonP);
+        if(echellon==null){
+            return null;
+        }else{
+            return echellon.getEchellonPrecedant();
+        }
+    }
 
 }

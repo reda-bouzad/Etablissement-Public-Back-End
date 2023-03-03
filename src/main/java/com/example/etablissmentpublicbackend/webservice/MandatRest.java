@@ -17,11 +17,8 @@ public class MandatRest  {
         return mandatService.findByCode(code);
     }
     @GetMapping("/responsabilite/{code}")
-    public int VerifierResponsabilite(@PathVariable String code){
-<<<<<<< HEAD
-=======
+    public int verifierResponsabilite(@PathVariable String code){
 
->>>>>>> origin/Abdelillah_branch
         return mandatService.VerifierResponsabilite(code);
     }
     @Transactional
