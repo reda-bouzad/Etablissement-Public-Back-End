@@ -27,10 +27,8 @@ public class MandatService {
     }
 
     public int save(Mandat mandat){
-
             mandatDao.save(mandat);
             return 1;
-
     }
     public int VerifierResponsabilite(String code){
         Mandat mandat = mandatDao.findByCode(code);
