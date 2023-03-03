@@ -28,6 +28,11 @@ public class EmployeRest {
         return employeService.count();
     }
 
+    @GetMapping("/codee/{codee}")
+    public int countEmploye(@PathVariable String codee) {
+        return employeService.countEmploye(codee);
+    }
+
     @DeleteMapping("/cin/{cin}")
     public int deleteByCin(@PathVariable String cin) {
         return employeService.deleteByCin(cin);
