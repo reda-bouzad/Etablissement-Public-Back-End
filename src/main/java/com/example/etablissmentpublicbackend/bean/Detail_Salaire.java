@@ -1,9 +1,12 @@
 package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 
 @Entity
+@EntityListeners(Detail_SalaireListener.class)
+
 public class Detail_Salaire {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -72,3 +75,31 @@ public class Detail_Salaire {
         this.code = code;
     }
 }
+@Component
+class Detail_SalaireListener {
+
+    @PreUpdate
+    public void beforeDetail_SalaireUpdate(Detail_Salaire detailSalaire) {
+        // Code to execute before updating an employee entity
+        System.out.println("Detail_Salaire " + detailSalaire.getCode() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterDetail_SalaireUpdate(Detail_Salaire detailSalaire) {
+        // Code to execute after updating an employee entity
+        System.out.println("Detail_Salaire " + detailSalaire.getCode() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeDetail_SalaireDelete(Detail_Salaire detailSalaire) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Detail_Salaire " + detailSalaire.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterDetail_SalaireDelete(Detail_Salaire detailSalaire) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Detail_Salaire " + detailSalaire.getCode() + " has been deleted");
+    }
+}
+

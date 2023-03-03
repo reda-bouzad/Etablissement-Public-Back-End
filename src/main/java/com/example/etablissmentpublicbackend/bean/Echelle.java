@@ -1,8 +1,11 @@
 package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@EntityListeners(EchelleListener.class)
+
 public class Echelle {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -46,3 +49,31 @@ public class Echelle {
 
 
 }
+@Component
+class EchelleListener {
+
+    @PreUpdate
+    public void beforeEchelleUpdate(Echelle echelle) {
+        // Code to execute before updating an employee entity
+        System.out.println("Echelle " + echelle.getCode() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterEchelleUpdate(Echelle echelle) {
+        // Code to execute after updating an employee entity
+        System.out.println("Echelle " + echelle.getCode() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeEchelleDelete(Echelle echelle) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Echelle " + echelle.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterEchelleDelete(Echelle echelle) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Echelle " + echelle.getCode() + " has been deleted");
+    }
+}
+

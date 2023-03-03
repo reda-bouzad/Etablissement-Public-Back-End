@@ -1,7 +1,11 @@
 package com.example.etablissmentpublicbackend.bean;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
+
 @Entity
+@EntityListeners(EchellonListener.class)
+
 public class Echellon {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -81,7 +85,31 @@ public class Echellon {
         this.echelle = echelle;
     }
 
+}
+@Component
+class EchellonListener {
 
+    @PreUpdate
+    public void beforeEchellonUpdate(Echellon echellon) {
+        // Code to execute before updating an employee entity
+        System.out.println("Echellon " + echellon.getCode() + " is about to be updated");
+    }
 
+    @PostUpdate
+    public void afterEchellonUpdate(Echellon echellon) {
+        // Code to execute after updating an employee entity
+        System.out.println("Echellon " + echellon.getCode() + " has been updated");
+    }
 
+    @PreRemove
+    public void beforeEchellonDelete(Echellon echellon) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Echellon " + echellon.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterEchellonDelete(Echellon echellon) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Echellon " + echellon.getCode() + " has been deleted");
+    }
 }

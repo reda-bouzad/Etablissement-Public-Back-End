@@ -1,8 +1,9 @@
 package com.example.etablissmentpublicbackend.bean;
-
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@EntityListeners(EmployeListener.class)
 public class Employe {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -81,8 +82,31 @@ public class Employe {
         this.salaireDeBase = salaireDeBase;
     }
 
-
-
-
 }
+@Component
+class EmployeListener {
 
+    @PreUpdate
+    public void beforeEmployeeUpdate(Employe employe) {
+        // Code to execute before updating an employee entity
+        System.out.println("Employe " + employe.getCin() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterEmployeeUpdate(Employe employe) {
+        // Code to execute after updating an employee entity
+        System.out.println("Employe " + employe.getCin() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeEmployeeDelete(Employe employe) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Employe " + employe.getCin() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterEmployeeDelete(Employe employe) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Employe " + employe.getCin() + " has been deleted");
+    }
+}
