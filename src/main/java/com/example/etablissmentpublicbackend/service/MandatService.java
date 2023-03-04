@@ -3,10 +3,12 @@ package com.example.etablissmentpublicbackend.service;
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Mandat;
 import com.example.etablissmentpublicbackend.dao.MandatDao;
-import jakarta.persistence.OneToOne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -40,7 +42,7 @@ public class MandatService {
 
     public int VerifierResponsabilite(String code) {
         Mandat mandat = mandatDao.findByCode(code);
-        if (mandat.getResponsabilite() == null) {
+        if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
             return -1;
         } else {
 
@@ -50,7 +52,7 @@ public class MandatService {
 
     public int updateSalaire(Mandat mandat) {
         Mandat dbmandat = mandatDao.findByCode(mandat.getCode());
-        if (dbmandat == null || mandat.getResponsabilite() == null) {
+        if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
             return -1;
         } else {
             Employe employe = dbmandat.getEmploye();
@@ -61,4 +63,26 @@ public class MandatService {
         }
 
     }
+    public String DureeResponsabilite(String code) {
+        Mandat mandat = mandatDao.findByCode(code);
+        if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
+            return "-1";
+        } else {
+            LocalDate dateDebut =mandat.getDateDebut().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate dateFin = mandat.getDateFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Period period = Period.between(dateDebut, dateFin);
+            int years = period.getYears();
+            int months = period.getMonths();
+            int days = period.getDays();
+            if (years == 0) return months + " mois et " + days + " jours";
+            else if (years == 0 && months == 0) return days + " jours";
+            else if (years == 0 && days == 0) return months + " mois";
+            else if (months == 0 && days == 0) return years + " ans";
+            else if (months == 0) return years + " ans et " + days + " jours";
+            else if (days == 0) return years + " ans et " + months + " mois";
+            else return years + " ans et " + months + " mois et " + days + " jours";
+        }
+
+    }
+
 }
