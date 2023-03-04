@@ -14,12 +14,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @EnableScheduling
-public class Detail_SalaireService {
+public class DetailSalaireService {
     @Autowired
     private Detail_SalaireDao detailSalaireDao;
     @Autowired
@@ -56,28 +56,27 @@ public class Detail_SalaireService {
 
     }
 
-    @Scheduled(cron = "0 57 19 * * ?")
+    @Scheduled(cron = "0 49 23 * * ?")
     public void trackingSalaries(){
-        double prime = 0;
+        double prime=0;
         double primeResponsabilite=0;
-        System.out.println("tracking salary is on");
+        System.out.println("tracking salaries is on");
         List<Employe> employees = employeDao.findAll();
         List<Mandat> mandats = mandatDao.findAll();
         List<Responsabilite> responsabilites = responsabiliteDao.findAll();
         for(Employe employe : employees) {
             for(Mandat mandat : mandats){
-                if(mandat.getEmploye().getId()==employe.getId()){
-                    prime += mandat.getPrime();
+                if(Objects.equals(mandat.getEmploye().getId(), employe.getId())){
+                    prime += mandat.getPrime();//employee has many (Mandat)=>Many(Prime)
                     break;
                 }
             }
             for(Responsabilite responsabilite : responsabilites){
-                if(responsabilite.getEmploye().getId()==employe.getId()){
-                    primeResponsabilite= responsabilite.getPrime();
+                if(Objects.equals(responsabilite.getEmploye().getId(),employe.getId())){//SonarLint suggestion it was == instead of equals()
+                    primeResponsabilite= responsabilite.getPrime(); //emp-->resp(@OneToOne)
                     break;
                 }
             }
-
                 String code = employe.getCin();
                 LocalDate date = LocalDate.now();
                 Double salaireBase = employe.getSalaireDeBase();
@@ -89,7 +88,7 @@ public class Detail_SalaireService {
                 detailSalaire.setPrimeResponsabilite(primeResponsabilite);
                 detailSalaireDao.save(detailSalaire);
             }
-        System.out.println("tracking salary completed ;)");
+        System.out.println("tracking salaries completed ;)");
   }
 
 }

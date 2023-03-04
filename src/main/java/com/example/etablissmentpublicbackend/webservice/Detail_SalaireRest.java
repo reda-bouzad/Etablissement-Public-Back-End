@@ -1,7 +1,7 @@
 package com.example.etablissmentpublicbackend.webservice;
 
 import com.example.etablissmentpublicbackend.bean.DetailSalaire;
-import com.example.etablissmentpublicbackend.service.Detail_SalaireService;
+import com.example.etablissmentpublicbackend.service.DetailSalaireService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.List;
 @RestController @RequestMapping("/api/v1/detail_salaire")
 public class Detail_SalaireRest {
     @Autowired
-    private Detail_SalaireService detailSalaireService;
+    private DetailSalaireService detailSalaireService;
 
     @GetMapping("/code/{code}")
     public DetailSalaire findByCode(@PathVariable String code) {
