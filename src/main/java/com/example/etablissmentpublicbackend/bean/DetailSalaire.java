@@ -2,17 +2,19 @@ package com.example.etablissmentpublicbackend.bean;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
+import java.time.LocalDate;
+
+
 
 
 @Entity
 @EntityListeners(Detail_SalaireListener.class)
-
-public class Detail_Salaire {
+public class DetailSalaire {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String code;
-    private String date;      //format(dd--mm-yy)
+        private LocalDate date;      //format(dd--mm-yy)
     private Double salaireBase;
     private Double primeResponsabilite;
     private Double primeGenerale;
@@ -27,11 +29,11 @@ public class Detail_Salaire {
         this.id = id;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -79,25 +81,25 @@ public class Detail_Salaire {
 class Detail_SalaireListener {
 
     @PreUpdate
-    public void beforeDetail_SalaireUpdate(Detail_Salaire detailSalaire) {
+    public void beforeDetail_SalaireUpdate(DetailSalaire detailSalaire) {
         // Code to execute before updating an employee entity
         System.out.println("Detail_Salaire " + detailSalaire.getCode() + " is about to be updated");
     }
 
     @PostUpdate
-    public void afterDetail_SalaireUpdate(Detail_Salaire detailSalaire) {
+    public void afterDetail_SalaireUpdate(DetailSalaire detailSalaire) {
         // Code to execute after updating an employee entity
         System.out.println("Detail_Salaire " + detailSalaire.getCode() + " has been updated");
     }
 
     @PreRemove
-    public void beforeDetail_SalaireDelete(Detail_Salaire detailSalaire) {
+    public void beforeDetail_SalaireDelete(DetailSalaire detailSalaire) {
         // Code to execute before deleting an employee entity
         System.out.println("Detail_Salaire " + detailSalaire.getCode() + " is about to be deleted");
     }
 
     @PostRemove
-    public void afterDetail_SalaireDelete(Detail_Salaire detailSalaire) {
+    public void afterDetail_SalaireDelete(DetailSalaire detailSalaire) {
         // Code to execute after deleting an employee entity
         System.out.println("Detail_Salaire " + detailSalaire.getCode() + " has been deleted");
     }

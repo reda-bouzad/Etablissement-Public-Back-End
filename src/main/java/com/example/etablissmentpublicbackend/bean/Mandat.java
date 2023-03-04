@@ -13,7 +13,6 @@ public class Mandat {
     private Double prime;
     private Date dateDebut;
     private Date dateFin;
-
     @ManyToOne
     private Employe employe;
 

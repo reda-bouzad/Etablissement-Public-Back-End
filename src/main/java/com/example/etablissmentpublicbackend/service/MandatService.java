@@ -21,6 +21,7 @@ public class MandatService {
         return mandatDao.findByCode(code);
     }
 
+
     public int deleteByCode(String code) {
         return mandatDao.deleteByCode(code);
     }

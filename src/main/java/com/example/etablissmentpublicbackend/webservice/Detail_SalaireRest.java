@@ -1,6 +1,6 @@
 package com.example.etablissmentpublicbackend.webservice;
 
-import com.example.etablissmentpublicbackend.bean.Detail_Salaire;
+import com.example.etablissmentpublicbackend.bean.DetailSalaire;
 import com.example.etablissmentpublicbackend.service.Detail_SalaireService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class Detail_SalaireRest {
     private Detail_SalaireService detailSalaireService;
 
     @GetMapping("/code/{code}")
-    public Detail_Salaire findByCode(@PathVariable String code) {
+    public DetailSalaire findByCode(@PathVariable String code) {
         return detailSalaireService.findByCode(code);
     }
 
@@ -24,11 +24,11 @@ public class Detail_SalaireRest {
         return detailSalaireService.deleteByCode(code);
     }
     @GetMapping("/")
-    public List<Detail_Salaire> findAll() {
+    public List<DetailSalaire> findAll() {
         return detailSalaireService.findAll();
     }
     @PostMapping("/")
-    public int save(@RequestBody Detail_Salaire detailSalaire) {
+    public int save(@RequestBody DetailSalaire detailSalaire) {
         return detailSalaireService.save(detailSalaire);
     }
 }
