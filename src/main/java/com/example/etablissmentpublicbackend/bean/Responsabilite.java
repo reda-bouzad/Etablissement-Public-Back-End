@@ -11,6 +11,8 @@ public class Responsabilite {
     private String code;
     @ManyToOne
     private Echellon echellonMin;
+
+
     @OneToOne(
             orphanRemoval = true,
             cascade = CascadeType.ALL)

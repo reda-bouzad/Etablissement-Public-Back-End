@@ -16,6 +16,14 @@ public class MandatRest  {
     public Mandat findByCode(@PathVariable String code) {
         return mandatService.findByCode(code);
     }
+    @GetMapping("/responsabilite/{code}")
+    public int VerifierResponsabilite(@PathVariable String code){
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Abdelillah_branch
+        return mandatService.VerifierResponsabilite(code);
+    }
     @Transactional
     @DeleteMapping("/code/{code}")
     public int deleteByCode(@PathVariable String code) {
@@ -28,5 +36,9 @@ public class MandatRest  {
     @PostMapping("/")
     public int save(@RequestBody Mandat mandat) {
         return mandatService.save(mandat);
+    }
+    @PutMapping("/updateSalaire")
+    public int updateSalaire(@RequestBody Mandat mandat) {
+        return mandatService.updateSalaire(mandat);
     }
 }

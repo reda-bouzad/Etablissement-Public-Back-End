@@ -9,4 +9,5 @@ public interface EmployeDao extends JpaRepository<Employe,Long> {
     Employe findByCin(String cin);
     int deleteByCin(String cin);
 
+
 }
