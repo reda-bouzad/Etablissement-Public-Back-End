@@ -29,6 +29,10 @@ public class EntiteAdministratifRest {
         return entiteAdministratifService.findChef(codeEntite);
     }
 
+    public List<Employe> listEmploye(String codeEn) {
+        return entiteAdministratifService.listEmploye(codeEn);
+    }
+
     @DeleteMapping("/code/{code}")
     @Transactional
     public int deleteByCode(@PathVariable String code) {
