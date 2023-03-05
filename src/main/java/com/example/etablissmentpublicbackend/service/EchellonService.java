@@ -33,6 +33,17 @@ public class EchellonService  {
         }
 
     }
+
+    public Long findDuree(String codeEch){
+        Echellon echellon=echellonDao.findByCode(codeEch);
+        if(echellon==null){
+            return null;
+        }
+        else{
+            return echellon.getDelai();
+        }
+
+    }
     public Double findMontant(String codeEchlon){
         Echellon echellon=echellonDao.findByCode(codeEchlon);
         if(echellon==null){
