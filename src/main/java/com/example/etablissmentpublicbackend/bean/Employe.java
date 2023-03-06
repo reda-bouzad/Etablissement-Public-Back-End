@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @EntityListeners(EmployeListener.class)
 public class Employe {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String cin;
     private String nom;
