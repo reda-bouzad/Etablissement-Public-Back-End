@@ -51,15 +51,12 @@ public class EntiteAdministratifService {
     }
 
     public Employe findChef(String codeEntite){
-
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntite);
         if (entiteAdministratif == null) {
             return null;
-
         }else{
             return entiteAdministratif.getChefEntite();
         }
-
     }
 
 

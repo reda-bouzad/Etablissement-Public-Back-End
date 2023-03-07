@@ -37,4 +37,8 @@ public class MandatRest  {
     public int updateSalaire(@RequestBody Mandat mandat) {
         return mandatService.updateSalaire(mandat);
     }
+    @GetMapping("/duree/{code}")
+    public String DureeResponsabilite(@PathVariable String code){
+        return mandatService.DureeResponsabilite(code);
+    }
 }

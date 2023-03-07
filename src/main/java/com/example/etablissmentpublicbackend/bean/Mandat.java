@@ -16,7 +16,7 @@ public class Mandat {
     private Double prime;
     private Date dateDebut;
     private Date dateFin;
-
+    private boolean primeAjoute;
     @ManyToOne
     private Employe employe;
 
@@ -79,6 +79,13 @@ public class Mandat {
         this.employe = employe;
     }
 
+    public boolean isPrimeAjoute() {
+        return primeAjoute;
+    }
+
+    public void setPrimeAjoute(boolean primeAjoute) {
+        this.primeAjoute = primeAjoute;
+    }
 }
 @Component
 class MandatListener {
