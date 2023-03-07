@@ -3,9 +3,6 @@ package com.example.etablissmentpublicbackend.service;
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Responsabilite;
 import com.example.etablissmentpublicbackend.dao.ResponsabiliteDao;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,37 +15,27 @@ public class ResponsabiliteService {
     private ResponsabiliteDao responsabiliteDao;
     @Autowired
     private EmployeService employeService;
-
-    @Autowired
-    private EntityManagerFactory entityManagerFactory;
-
-
     public Responsabilite findByLibelle(String libelle) {
         return responsabiliteDao.findByLibelle(libelle);
     }
-
     public Responsabilite findByCode(String code) {
         return responsabiliteDao.findByCode(code);
     }
-
     public int deleteByLibelle(String libelle) {
         responsabiliteDao.deleteByLibelle(libelle);
         return 1;
     }
-
     public int deleteByCode(String code) {
         responsabiliteDao.deleteByCode(code);
         return 1;
     }
-
     public List<Responsabilite> findAll() {
         return responsabiliteDao.findAll();
     }
-
-    public int save(Responsabilite responsabilite) {
+    public int save(Responsabilite responsabilite){
         if (findByCode(responsabilite.getCode()) != null) {
             return -1;
-        } else {
+        }else{
             responsabiliteDao.save(responsabilite);
             return 1;
         }
@@ -67,7 +54,4 @@ public class ResponsabiliteService {
             responsabiliteDao.save(responsabilite);
         }
     }
-
-
-
 }
