@@ -1,5 +1,6 @@
 package com.example.etablissmentpublicbackend.bean;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 @Entity
 public class Echellon {
@@ -14,7 +15,7 @@ public class Echellon {
     @JsonBackReference
     @OneToOne
     private Echellon echellonSuivant;
-    @JsonBackReference
+    @JsonManagedReference
     @OneToOne
     private Echellon echellonPrecedant;
     private Long delai;
