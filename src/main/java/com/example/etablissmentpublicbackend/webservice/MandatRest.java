@@ -19,10 +19,6 @@ public class MandatRest  {
 
     @GetMapping("/responsabilite/{code}")
     public int VerifierResponsabilite(@PathVariable String code){
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/tarik_branch
         return mandatService.VerifierResponsabilite(code);
     }
     @Transactional

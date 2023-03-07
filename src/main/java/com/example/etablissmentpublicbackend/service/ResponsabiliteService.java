@@ -59,48 +59,15 @@ public class ResponsabiliteService {
         return employe;
     } */
 
-    public void updateResponsabilite(Long responsabiliteId, Employe employe) {
+    public void updateResponsability(Long responsabiliteId , Employe employe){
         Optional<Responsabilite> optionalResponsabilite = responsabiliteDao.findById(responsabiliteId);
-        if (employe != null && employe.getId() != null) {
-            Optional<Employe> optionalEmploye = employeService.findById(employe.getId());
-            if (optionalEmploye.isPresent()) {
-                Employe updatedEmploye = optionalEmploye.get();
-                if (optionalResponsabilite.isPresent()) {
-                    Responsabilite responsabilite = optionalResponsabilite.get();
-                    if (responsabilite.getEmploye() != null && !responsabilite.getEmploye().equals(updatedEmploye)) {
-                        throw new IllegalArgumentException("This responsibility is already assigned to another employee.");
-                    }
-                    if (updatedEmploye.getEchellon().getId() < responsabilite.getEchellonMin().getId()) {
-                        throw new IllegalArgumentException("This employee's echelle is not sufficient for this responsibility.");
-                    }
-                    EntityManager entityManager = entityManagerFactory.createEntityManager();
-                    entityManager.getTransaction().begin();
-                    try {
-                        Query query = entityManager.createQuery("SELECT COUNT(r) FROM Responsabilite r WHERE r.employe = :employe");
-                        query.setParameter("employe", updatedEmploye);
-                        Long count = (Long) query.getSingleResult();
-                        if (count > 0) {
-                            throw new IllegalArgumentException("This employee is already assigned to another responsibility.");
-                        }
-                        responsabilite.setEmploye(updatedEmploye);
-                        responsabiliteDao.save(responsabilite);
-                        entityManager.getTransaction().commit();
-                    } catch (Exception ex) {
-                        entityManager.getTransaction().rollback();
-                        throw ex;
-                    } finally {
-                        entityManager.close();
-                    }
-                } else {
-                    throw new IllegalArgumentException("Responsabilite not found for id: " + responsabiliteId);
-                }
-            } else {
-                throw new IllegalArgumentException("Employe not found for id: " + employe.getId());
-            }
-        } else {
-            throw new IllegalArgumentException(String.valueOf(employe.getId()));
+        if (optionalResponsabilite.isPresent()){
+            Responsabilite responsabilite = optionalResponsabilite.get();
+            responsabilite.setEmploye(employe);
+            responsabiliteDao.save(responsabilite);
         }
     }
+
 
 
 }
