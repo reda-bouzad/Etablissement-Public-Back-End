@@ -11,7 +11,7 @@ public class EntiteAdministratif {
     private Long id;
     private String code;
     private String libelle;
-    @ManyToOne
+    @OneToOne
     private Employe chefEntite;
 
     public Long getId() {

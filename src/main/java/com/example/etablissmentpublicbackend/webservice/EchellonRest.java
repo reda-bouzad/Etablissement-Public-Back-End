@@ -41,4 +41,12 @@ public class EchellonRest {
     public Double findMontant(@PathVariable String codeEchlon) {
         return echellonService.findMontant(codeEchlon);
     }
+    @GetMapping("/codeEchlonS/{codeEchlonS}")
+    public Echellon findEchlonSuivant(String codeEchlon) {
+        return echellonService.findEchlonSuivant(codeEchlon);
+    }
+    @GetMapping("/codeEchlonP/{codeEchlonP}")
+    public Echellon findEchlonPrecedant(String codeEchlon) {
+        return echellonService.findEchlonPrecedant(codeEchlon);
+    }
 }
