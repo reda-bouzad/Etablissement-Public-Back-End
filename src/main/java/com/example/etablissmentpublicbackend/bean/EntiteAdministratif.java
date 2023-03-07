@@ -1,5 +1,6 @@
 package com.example.etablissmentpublicbackend.bean;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ public class EntiteAdministratif {
     private Long id;
     private String code;
     private String libelle;
+    @JsonBackReference
     @OneToOne
     private Employe chefEntite;
 

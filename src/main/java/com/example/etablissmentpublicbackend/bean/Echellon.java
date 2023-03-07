@@ -11,8 +11,10 @@ public class Echellon {
     @ManyToOne
     private Echelle echelle;
     private Double montant;
+    @JsonBackReference
     @OneToOne
     private Echellon echellonSuivant;
+    @JsonBackReference
     @OneToOne
     private Echellon echellonPrecedant;
     private Long delai;
