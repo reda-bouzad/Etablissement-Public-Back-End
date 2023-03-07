@@ -31,6 +31,12 @@ public class EchellonRest {
     public int save(@RequestBody Echellon echellon) {
         return echellonService.save(echellon);
     }
+
+    @GetMapping("/codeEch/{codeEch}")
+    public Long findDuree(@PathVariable String codeEch) {
+        return echellonService.findDuree(codeEch);
+    }
+
     @GetMapping("/codeEchlon/{codeEchlon}")
     public Double findMontant(@PathVariable String codeEchlon) {
         return echellonService.findMontant(codeEchlon);

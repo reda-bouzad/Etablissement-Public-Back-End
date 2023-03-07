@@ -15,6 +15,8 @@ public class EntiteAdministratifService {
     @Autowired
     private EntiteAdministratifDao entiteAdministratifDao;
 
+
+
     private EmployeService employeService;
 
     public EntiteAdministratif findByCode(String code) {
@@ -27,6 +29,24 @@ public class EntiteAdministratifService {
         }else{
             entiteAdministratifDao.save(entiteAdministratif);
             return 1;
+        }
+    }
+
+    public List<Employe> listEmploye(String codeEn){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEn);
+        List <Employe> list=employeService.findAll();
+        List <Employe> list1 = null;
+        if (entiteAdministratif == null) {
+            return null;
+
+        }else{
+            for(int i=0;i<list.size();i++){
+                if(list.get(i).getEntiteAdministratif()==entiteAdministratif){
+                    list1.add(list.get(i));
+                    
+                }
+            }
+            return list1;
         }
     }
 
