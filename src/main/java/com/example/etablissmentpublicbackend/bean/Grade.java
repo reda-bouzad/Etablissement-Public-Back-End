@@ -1,11 +1,11 @@
 package com.example.etablissmentpublicbackend.bean;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@EntityListeners(GradeListener.class)
+
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -38,3 +38,31 @@ public class Grade {
     }
 
 }
+@Component
+class GradeListener {
+
+    @PreUpdate
+    public void beforeGradeUpdate(Grade grade) {
+        // Code to execute before updating an employee entity
+        System.out.println("Grade " + grade.getCode() + " is about to be updated");
+    }
+
+    @PostUpdate
+    public void afterGradeUpdate(Grade grade) {
+        // Code to execute after updating an employee entity
+        System.out.println("Grade " + grade.getCode() + " has been updated");
+    }
+
+    @PreRemove
+    public void beforeGradeDelete(Grade grade) {
+        // Code to execute before deleting an employee entity
+        System.out.println("Grade " + grade.getCode() + " is about to be deleted");
+    }
+
+    @PostRemove
+    public void afterGradeDelete(Grade grade) {
+        // Code to execute after deleting an employee entity
+        System.out.println("Grade " + grade.getCode() + " has been deleted");
+    }
+}
+
