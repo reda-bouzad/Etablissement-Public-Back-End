@@ -54,7 +54,7 @@ public class DetailSalaireService {
 
     }
 
-    @Scheduled(cron = "0 22 14 * * ?")
+    @Scheduled(cron = "0 55 16 * * ?")
     public void trackingSalaries(){
         double prime=0;
         double primeResponsabilite=0;
@@ -85,7 +85,6 @@ public class DetailSalaireService {
                 detailSalaire.setSalaireBase(salaireBase);
                 detailSalaire.setPrimeResponsabilite(primeResponsabilite);
                 detailSalaire.setEmploye(employe);
-
                 detailSalaireDao.save(detailSalaire);
             }
         System.out.println("tracking salaries is completed ;)");

@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -14,12 +15,12 @@ import java.util.Date;
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 17 20 * * ?") //sec-min-hour-dd-mm-yy
+    @Scheduled(cron = "0 59 16 * * ?") //sec-min-hour-dd-mm-yy
     public void backUpFunction(){
 
-       System.out.println("Backup Started at " + new Date());
+       System.out.println("Backup Started at " +  LocalDate.now());
 
-        Date backupDate = new Date();
+        LocalDate backupDate = LocalDate.now();
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String backupDateString = format.format(backupDate);
         String nomFichier = "Daily_DB_Backup"; //nom par defaut
