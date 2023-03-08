@@ -1,35 +1,33 @@
 package com.example.etablissmentpublicbackend.service;
 
+
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
 
 @Service
 @EnableScheduling
 public class DbAutoBackupService {
 
-    @Scheduled(cron = "0 17 20 * * ?") //sec-min-hour-dd-mm-yy
+    @Scheduled(cron = "*/10 * * * * 1")//sec-min-hour-dd-mm-yy
     public void backUpFunction(){
 
-       System.out.println("Backup Started at " + new Date());
+        System.out.println("Backup Started at " + new Date());
 
         Date backupDate = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String backupDateString = format.format(backupDate);
         String nomFichier = "Daily_DB_Backup"; //nom par defaut
-        String cheminDossier = "C:\\Users\\elqar\\BackupAppSpring";  //le dossier de backup
+        String cheminDossier = "/home/reda/BackupAppSpring";  //le dossier de backup
         //change path to ur root folder(admin actuel)
 
         String saveNomFichier = nomFichier + "_" + backupDateString + ".sql";
-        String saveChemin = cheminDossier + "\\" + saveNomFichier;
+        String saveChemin = cheminDossier + "/" + saveNomFichier;
         //il faut ajouter mysqldump dans votre variable d'envi "PATH"
-        String backUpCmd ="cmd /c mysqldump -u root etablissementpublic >"+" "+saveChemin;
+        String backUpCmd ="/usr/bin/sh -c mysqldump -u reda -plolandlol EtablissementPublic >" + "/home/reda/BackupAppSpring/Daily_DB_Backup";
         //pour linux on utilise /bin/sh -c au lieu de cmd /c
         Process runtimeProcess = null;
 

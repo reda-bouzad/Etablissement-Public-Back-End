@@ -2,21 +2,21 @@ package com.example.etablissmentpublicbackend.service;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
-import com.example.etablissmentpublicbackend.dao.EmployeDao;
 import com.example.etablissmentpublicbackend.dao.EntiteAdministratifDao;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EntiteAdministratifService {
     @Autowired
     private EntiteAdministratifDao entiteAdministratifDao;
 
-
-
+    @Autowired
     private EmployeService employeService;
 
     public EntiteAdministratif findByCode(String code) {
@@ -31,33 +31,44 @@ public class EntiteAdministratifService {
             return 1;
         }
     }
+    public int countEmploye(String codee){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codee);
+        int nbrEmployees=0;
+        List <Employe> employees=employeService.findAll();
+        if(entiteAdministratif==null){
+            return -1;
 
-    public List<Employe> listEmploye(String codeEn){
-        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEn);
-        List <Employe> list=employeService.findAll();
-        List <Employe> list1 = null;
-        if (entiteAdministratif == null) {
-            return null;
         }else{
-            for(int i=0;i<list.size();i++){
-                if(list.get(i).getEntiteAdministratif()==entiteAdministratif){
-                    list1.add(list.get(i));
-                    
+
+            for(Employe employe : employees){
+                if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
+                    nbrEmployees+=1;
                 }
             }
-            return list1;
+            return nbrEmployees;
+        }
+    }
+    public List<Employe> findEmloyeOfAdminEntity(String codeEntity){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntity);
+        List<Employe> emps = new ArrayList<>();
+        List<Employe> employees = employeService.findAll();
+        if(entiteAdministratif==null){
+            return null;
+        }else{
+            for(Employe employe : employees){
+                if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
+                    emps.add(employe);
+                }
+            }
+            return emps;
         }
     }
 
     public Employe findChef(String codeEntite){
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntite);
 
-            return entiteAdministratif.getChefEntite();
-
+        return entiteAdministratif.getChefEntite();
     }
-
-
-
     @Transactional
     public int deleteByCode(String code) {
         return entiteAdministratifDao.deleteByCode(code);

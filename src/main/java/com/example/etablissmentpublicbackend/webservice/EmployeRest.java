@@ -2,8 +2,9 @@ package com.example.etablissmentpublicbackend.webservice;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.service.EmployeService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,11 +27,6 @@ public class EmployeRest {
     @GetMapping("/count")
     public long count() {
         return employeService.count();
-    }
-
-    @GetMapping("/codee/{codee}")
-    public int countEmploye(@PathVariable String codee) {
-        return employeService.countEmploye(codee);
     }
 
     @DeleteMapping("/cin/{cin}")

@@ -5,9 +5,6 @@ import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Mandat;
 import com.example.etablissmentpublicbackend.bean.Responsabilite;
 import com.example.etablissmentpublicbackend.dao.Detail_SalaireDao;
-import com.example.etablissmentpublicbackend.dao.EmployeDao;
-import com.example.etablissmentpublicbackend.dao.MandatDao;
-import com.example.etablissmentpublicbackend.dao.ResponsabiliteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,11 +20,12 @@ public class DetailSalaireService {
     @Autowired
     private Detail_SalaireDao detailSalaireDao;
     @Autowired
-    private EmployeDao employeDao;
+    private EmployeService employeService;
     @Autowired
-    private MandatDao mandatDao;
+    private MandatService mandatService ;
     @Autowired
-    ResponsabiliteDao responsabiliteDao;
+    private ResponsabiliteService responsabiliteService;
+
 
 
     public DetailSalaire findByCode(String code) {
@@ -56,27 +54,27 @@ public class DetailSalaireService {
 
     }
 
-    @Scheduled(cron = "0 49 23 * * ?")
+    @Scheduled(cron = "0 22 14 * * ?")
     public void trackingSalaries(){
         double prime=0;
         double primeResponsabilite=0;
         System.out.println("tracking salaries is on");
-        List<Employe> employees = employeDao.findAll();
-        List<Mandat> mandats = mandatDao.findAll();
-        List<Responsabilite> responsabilites = responsabiliteDao.findAll();
+        List<Employe> employees = employeService.findAll();
+        List<Mandat> mandats = mandatService.findAll();
+        List<Responsabilite> responsabilites = responsabiliteService.findAll();
         for(Employe employe : employees) {
             for(Mandat mandat : mandats){
                 if(Objects.equals(mandat.getEmploye().getId(), employe.getId())){
-                    prime += mandat.getPrime();//employee has many (Mandat)=>Many(Prime)
-                    break;
+                    prime = mandat.getPrime();
                 }
             }
             for(Responsabilite responsabilite : responsabilites){
                 if(Objects.equals(responsabilite.getEmploye().getId(),employe.getId())){//SonarLint suggestion it was == instead of equals()
                     primeResponsabilite= responsabilite.getPrime(); //emp-->resp(@OneToOne)
-                    break;
+
                 }
             }
+
                 String code = employe.getCin();
                 LocalDate date = LocalDate.now();
                 Double salaireBase = employe.getSalaireDeBase();
@@ -86,9 +84,11 @@ public class DetailSalaireService {
                 detailSalaire.setPrimeGenerale(prime);
                 detailSalaire.setSalaireBase(salaireBase);
                 detailSalaire.setPrimeResponsabilite(primeResponsabilite);
+                detailSalaire.setEmploye(employe);
+
                 detailSalaireDao.save(detailSalaire);
             }
-        System.out.println("tracking salaries completed ;)");
+        System.out.println("tracking salaries is completed ;)");
   }
 
 }
