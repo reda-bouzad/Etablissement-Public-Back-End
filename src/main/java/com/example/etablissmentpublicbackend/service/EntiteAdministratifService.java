@@ -51,21 +51,19 @@ public class EntiteAdministratifService {
     }
 
 
-    public List<Employe> listEmploye(String codeEn){
-        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEn);
-        List <Employe> employees=employeService.findAll();
-        List <Employe> list = new ArrayList<>();
-        if (entiteAdministratif == null) {
+    public List<Employe> findEmloyeOfAdminEntity(String codeEntity){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntity);
+        List<Employe> emps = new ArrayList<>();
+        List<Employe> employees = employeService.findAll();
+        if(entiteAdministratif==null){
             return null;
-
         }else{
             for(Employe employe : employees){
                 if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
-                    list.add(employe);
-
+                    emps.add(employe);
                 }
             }
-            return list;
+            return emps;
         }
     }
 
