@@ -33,19 +33,19 @@ public class EntiteAdministratifService {
     }
     public int countEmploye(String codee){
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codee);
-        int a=0;
-        List <Employe> list=employeService.findAll();
+        int nbrEmployees=0;
+        List <Employe> employees=employeService.findAll();
         if(entiteAdministratif==null){
             return -1;
 
         }else{
 
-            for(int i=0;i<list.size();i++){
-                if(list.get(i).getEntiteAdministratif()==entiteAdministratif){
-                    a=a+1;
+            for(Employe employe : employees){
+                if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
+                    nbrEmployees+=1;
                 }
             }
-            return a;
+            return nbrEmployees;
         }
     }
     public List<Employe> findEmloyeOfAdminEntity(String codeEntity){
