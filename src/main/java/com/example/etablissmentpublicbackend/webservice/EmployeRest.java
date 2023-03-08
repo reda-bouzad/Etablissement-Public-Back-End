@@ -4,10 +4,13 @@ import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.service.EmployeService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @CrossOrigin("*")
+
 @RestController @RequestMapping("/api/v1/employe")
 public class EmployeRest {
     @Autowired
@@ -28,10 +31,7 @@ public class EmployeRest {
         return employeService.count();
     }
 
-    @GetMapping("/codee/{codee}")
-    public int countEmploye(@PathVariable String codee) {
-        return employeService.countEmploye(codee);
-    }
+
 
     @DeleteMapping("/cin/{cin}")
     public int deleteByCin(@PathVariable String cin) {
