@@ -29,6 +29,7 @@ public class EntiteAdministratifRest {
         return entiteAdministratifService.findChef(codeEntite);
     }
 
+
     public List<Employe> listEmploye(String codeEn) {
         return entiteAdministratifService.listEmploye(codeEn);
     }

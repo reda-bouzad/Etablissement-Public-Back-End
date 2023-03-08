@@ -38,7 +38,6 @@ public class EntiteAdministratifService {
         List <Employe> list1 = null;
         if (entiteAdministratif == null) {
             return null;
-
         }else{
             for(int i=0;i<list.size();i++){
                 if(list.get(i).getEntiteAdministratif()==entiteAdministratif){

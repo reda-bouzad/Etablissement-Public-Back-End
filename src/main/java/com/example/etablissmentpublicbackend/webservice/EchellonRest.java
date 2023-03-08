@@ -32,20 +32,20 @@ public class EchellonRest {
         return echellonService.save(echellon);
     }
 
-    @GetMapping("/codeEch/{codeEch}")
+    @GetMapping("/duree/{codeEch}")
     public Long findDuree(@PathVariable String codeEch) {
         return echellonService.findDuree(codeEch);
     }
 
-    @GetMapping("/codeEchlon/{codeEchlon}")
+    @GetMapping("/montant/{codeEchlon}")
     public Double findMontant(@PathVariable String codeEchlon) {
         return echellonService.findMontant(codeEchlon);
     }
-    @GetMapping("/codeEchlonS/{codeEchlonS}")
+    @GetMapping("/suivant/{codeEchlonS}")
     public Echellon findEchlonSuivant(String codeEchlon) {
         return echellonService.findEchlonSuivant(codeEchlon);
     }
-    @GetMapping("/codeEchlonP/{codeEchlonP}")
+    @GetMapping("/precedant/{codeEchlonP}")
     public Echellon findEchlonPrecedant(String codeEchlon) {
         return echellonService.findEchlonPrecedant(codeEchlon);
     }
