@@ -54,7 +54,7 @@ public class DetailSalaireService {
 
     }
 
-    @Scheduled(cron = "0 34 10 * * ?")
+    @Scheduled(cron = "0 22 14 * * ?")
     public void trackingSalaries(){
         double prime=0;
         double primeResponsabilite=0;
@@ -65,16 +65,16 @@ public class DetailSalaireService {
         for(Employe employe : employees) {
             for(Mandat mandat : mandats){
                 if(Objects.equals(mandat.getEmploye().getId(), employe.getId())){
-                    prime += mandat.getPrime();//employee has many (Mandat)=>Many(Prime)
-                    break;
+                    prime = mandat.getPrime();
                 }
             }
             for(Responsabilite responsabilite : responsabilites){
                 if(Objects.equals(responsabilite.getEmploye().getId(),employe.getId())){//SonarLint suggestion it was == instead of equals()
                     primeResponsabilite= responsabilite.getPrime(); //emp-->resp(@OneToOne)
-                    break;
+
                 }
             }
+
                 String code = employe.getCin();
                 LocalDate date = LocalDate.now();
                 Double salaireBase = employe.getSalaireDeBase();
@@ -84,9 +84,11 @@ public class DetailSalaireService {
                 detailSalaire.setPrimeGenerale(prime);
                 detailSalaire.setSalaireBase(salaireBase);
                 detailSalaire.setPrimeResponsabilite(primeResponsabilite);
+                detailSalaire.setEmploye(employe);
+
                 detailSalaireDao.save(detailSalaire);
             }
-        System.out.println("tracking salaries completed ;)");
+        System.out.println("tracking salaries is completed ;)");
   }
 
 }
