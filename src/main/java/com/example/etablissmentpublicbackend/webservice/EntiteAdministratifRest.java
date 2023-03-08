@@ -28,6 +28,17 @@ public class EntiteAdministratifRest {
     public Employe findChef(@PathVariable String codeEntite) {
         return entiteAdministratifService.findChef(codeEntite);
     }
+    @GetMapping("/codee/{codee}")
+    public int countEmploye(@PathVariable String codee) {
+        return entiteAdministratifService.countEmploye(codee);
+
+    }
+
+    @GetMapping("/codeEntity/{codeEntity}")
+    public List<Employe> findEmloyeOfAdminEntity(@PathVariable String codeEntity) {
+        return entiteAdministratifService.findEmloyeOfAdminEntity(codeEntity);
+    }
+
     @DeleteMapping("/code/{code}")
     @Transactional
     public int deleteByCode(@PathVariable String code) {

@@ -31,6 +31,38 @@ public class EntiteAdministratifService {
             return 1;
         }
     }
+    public int countEmploye(String codee){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codee);
+        int a=0;
+        List <Employe> list=employeService.findAll();
+        if(entiteAdministratif==null){
+            return -1;
+
+        }else{
+
+            for(int i=0;i<list.size();i++){
+                if(list.get(i).getEntiteAdministratif()==entiteAdministratif){
+                    a=a+1;
+                }
+            }
+            return a;
+        }
+    }
+    public List<Employe> findEmloyeOfAdminEntity(String codeEntity){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntity);
+        List<Employe> emps = new ArrayList<>();
+        List<Employe> employees = employeService.findAll();
+        if(entiteAdministratif==null){
+            return null;
+        }else{
+            for(Employe employe : employees){
+                if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
+                    emps.add(employe);
+                }
+            }
+            return emps;
+        }
+    }
 
     public Employe findChef(String codeEntite){
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntite);
