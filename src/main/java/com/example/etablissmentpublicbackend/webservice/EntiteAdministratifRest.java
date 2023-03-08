@@ -29,6 +29,13 @@ public class EntiteAdministratifRest {
         return entiteAdministratifService.findChef(codeEntite);
     }
 
+
+    @GetMapping("/codee/{codee}")
+    public int countEmploye(String codee) {
+        return entiteAdministratifService.countEmploye(codee);
+    }
+
+    @GetMapping("/codeEn/{codeEn}")
     public List<Employe> listEmploye(String codeEn) {
         return entiteAdministratifService.listEmploye(codeEn);
     }

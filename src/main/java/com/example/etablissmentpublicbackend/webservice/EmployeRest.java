@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController @RequestMapping("/api/v1/employe")
 public class EmployeRest {
@@ -28,10 +29,7 @@ public class EmployeRest {
         return employeService.count();
     }
 
-    @GetMapping("/codee/{codee}")
-    public int countEmploye(@PathVariable String codee) {
-        return employeService.countEmploye(codee);
-    }
+
 
     @DeleteMapping("/cin/{cin}")
     public int deleteByCin(@PathVariable String cin) {
