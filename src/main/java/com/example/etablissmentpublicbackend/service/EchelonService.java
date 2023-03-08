@@ -1,72 +1,72 @@
 package com.example.etablissmentpublicbackend.service;
 
-import com.example.etablissmentpublicbackend.bean.Echellon;
-import com.example.etablissmentpublicbackend.dao.EchellonDao;
+import com.example.etablissmentpublicbackend.bean.Echelon;
+import com.example.etablissmentpublicbackend.dao.EchelonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EchellonService  {
+public class EchelonService  {
     @Autowired
-    private EchellonDao echellonDao;
+    private EchelonDao echelonDao;
 
-    public Echellon findByCode(String code) {
-        return echellonDao.findByCode(code);
+    public Echelon findByCode(String code) {
+        return echelonDao.findByCode(code);
     }
 
     public int deleteByCode(String code) {
-        return echellonDao.deleteByCode(code);
+        return echelonDao.deleteByCode(code);
     }
 
-    public List<Echellon> findAll() {
-        return echellonDao.findAll();
+    public List<Echelon> findAll() {
+        return echelonDao.findAll();
     }
 
-    public int save(Echellon echellon) {
-        if (findByCode(echellon.getCode()) != null) {
+    public int save(Echelon echelon) {
+        if (findByCode(echelon.getCode()) != null) {
             return -1;
         }else{
-            echellonDao.save(echellon);
+            echelonDao.save(echelon);
             return 1;
         }
 
     }
 
     public Long findDuree(String codeEch){
-        Echellon echellon=echellonDao.findByCode(codeEch);
-        if(echellon==null){
+        Echelon echelon = echelonDao.findByCode(codeEch);
+        if(echelon ==null){
             return null;
         }
         else{
-            return echellon.getDelai();
+            return echelon.getDelai();
         }
 
     }
     public Double findMontant(String codeEchlon){
-        Echellon echellon=echellonDao.findByCode(codeEchlon);
-        if(echellon==null){
+        Echelon echelon = echelonDao.findByCode(codeEchlon);
+        if(echelon ==null){
             return null;
         }else{
-            return echellon.getMontant();
+            return echelon.getMontant();
         }
     }
-    public Echellon findEchlonSuivant(String codeEchlonS){
-        Echellon echellon=echellonDao.findByCode(codeEchlonS);
-        if(echellon==null){
+    public Echelon findEchlonSuivant(String codeEchlonS){
+        Echelon echelon = echelonDao.findByCode(codeEchlonS);
+        if(echelon ==null){
             return null;
         }else{
-            return echellon.getEchellonSuivant();
+            return echelon.getEchellonSuivant();
 
         }
     }
-    public Echellon findEchlonPrecedant(String codeEchlonP){
-        Echellon echellon=echellonDao.findByCode(codeEchlonP);
-        if(echellon==null){
+    public Echelon findEchlonPrecedant(String codeEchlonP){
+        Echelon echelon = echelonDao.findByCode(codeEchlonP);
+        if(echelon ==null){
             return null;
         }else{
-            return echellon.getEchellonPrecedant();
+            return echelon.getEchellonPrecedant();
         }
     }
 

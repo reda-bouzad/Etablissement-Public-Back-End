@@ -1,6 +1,5 @@
 package com.example.etablissmentpublicbackend.bean;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,7 +10,7 @@ public class Employe {
     private String nom;
     private String prenom;
     @ManyToOne
-    private Echellon echellon;
+    private Echelon echelon;
 
     @ManyToOne
     private EntiteAdministratif entiteAdministratif;
@@ -58,12 +57,12 @@ public class Employe {
         this.prenom = prenom;
     }
 
-    public Echellon getEchellon() {
-        return echellon;
+    public Echelon getEchellon() {
+        return echelon;
     }
 
-    public void setEchellon(Echellon echellon) {
-        this.echellon = echellon;
+    public void setEchellon(Echelon echelon) {
+        this.echelon = echelon;
     }
 
     public EntiteAdministratif getEntiteAdministratif() {

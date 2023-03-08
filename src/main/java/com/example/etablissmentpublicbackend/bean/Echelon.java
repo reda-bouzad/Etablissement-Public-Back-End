@@ -3,7 +3,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 @Entity
-public class Echellon {
+public class Echelon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,10 +14,10 @@ public class Echellon {
     private Double montant;
     @JsonBackReference
     @OneToOne
-    private Echellon echellonSuivant;
+    private Echelon echelonSuivant;
     @JsonManagedReference
     @OneToOne
-    private Echellon echellonPrecedant;
+    private Echelon echelonPrecedant;
     private Long delai;
 
     public Long getId() {
@@ -52,20 +52,20 @@ public class Echellon {
         this.montant = montant;
     }
 
-    public Echellon getEchellonSuivant() {
-        return echellonSuivant;
+    public Echelon getEchellonSuivant() {
+        return echelonSuivant;
     }
 
-    public void setEchellonSuivant(Echellon echellon_suivant) {
-        this.echellonSuivant = echellon_suivant;
+    public void setEchellonSuivant(Echelon echelon_suivant) {
+        this.echelonSuivant = echelon_suivant;
     }
 
-    public Echellon getEchellonPrecedant() {
-        return echellonPrecedant;
+    public Echelon getEchellonPrecedant() {
+        return echelonPrecedant;
     }
 
-    public void setEchellonPrecedant(Echellon echellon_precedant) {
-        this.echellonPrecedant = echellon_precedant;
+    public void setEchellonPrecedant(Echelon echelon_precedant) {
+        this.echelonPrecedant = echelon_precedant;
     }
 
     public Long getDelai() {

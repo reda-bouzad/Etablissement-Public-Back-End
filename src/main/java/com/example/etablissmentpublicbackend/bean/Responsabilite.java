@@ -1,6 +1,5 @@
 package com.example.etablissmentpublicbackend.bean;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,7 +10,7 @@ public class Responsabilite {
     private String libelle;
     private String code;
     @ManyToOne
-    private Echellon echellonMin;
+    private Echelon echelonMin;
     @OneToOne
     private Employe employe;
     private Double prime;
@@ -50,12 +49,12 @@ public class Responsabilite {
 
 
 
-    public Echellon getEchellonMin() {
-        return echellonMin;
+    public Echelon getEchellonMin() {
+        return echelonMin;
     }
 
-    public void setEchellonMin(Echellon echellon_min) {
-        this.echellonMin = echellon_min;
+    public void setEchellonMin(Echelon echelon_min) {
+        this.echelonMin = echelon_min;
     }
 
     public Employe getEmploye() {

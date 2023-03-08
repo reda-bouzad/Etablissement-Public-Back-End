@@ -2,8 +2,10 @@ package com.example.etablissmentpublicbackend.service;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
+import com.example.etablissmentpublicbackend.converter.EmployeConverter;
 import com.example.etablissmentpublicbackend.dao.EmployeDao;
 import com.example.etablissmentpublicbackend.dao.EntiteAdministratifDao;
+import com.example.etablissmentpublicbackend.dto.EmployeDto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,21 +51,25 @@ public class EntiteAdministratifService {
     }
 
 
-    public List<Employe> listEmploye(String codeEn){
-        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEn);
-        List <Employe> employees=employeService.findAll();
-        List <Employe> list = new ArrayList<>();
+    public List<EmployeDto> listEmploye(String codeEn) {
+        EntiteAdministratif entiteAdministratif = entiteAdministratifDao.findByCode(codeEn);
+        List<Employe> employees = employeService.findAll();
+        List<EmployeDto> list = new ArrayList<>();
         if (entiteAdministratif == null) {
             return null;
-        }else{
-            for(Employe employe : employees){
-                if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
-                    list.add(employe);
+        } else {
+            EmployeConverter employeConverter = new EmployeConverter();
+            for (Employe employe : employees) {
+                if (Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())) {
+                    EmployeDto employeDto = employeConverter.toDto(employe);
+                    list.add(employeDto);
                 }
             }
             return list;
         }
     }
+
+
 
     public Employe findChef(String codeEntite){
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntite);
