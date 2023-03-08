@@ -2,21 +2,20 @@ package com.example.etablissmentpublicbackend.service;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
-import com.example.etablissmentpublicbackend.dao.EmployeDao;
 import com.example.etablissmentpublicbackend.dao.EntiteAdministratifDao;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EntiteAdministratifService {
     @Autowired
     private EntiteAdministratifDao entiteAdministratifDao;
-
-
-
+    @Autowired
     private EmployeService employeService;
 
     public EntiteAdministratif findByCode(String code) {
@@ -32,21 +31,32 @@ public class EntiteAdministratifService {
         }
     }
 
-    public List<Employe> listEmploye(String codeEn){
-        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEn);
+    public List<Employe> findEmloyeOfAdminEntity(String codeEntity){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntity);
+        List<Employe> emps = new ArrayList<>();
+        List<Employe> employees = employeService.findAll();
+        for(Employe employe : employees){
+            if(Objects.equals(employe.getEntiteAdministratif().getId(), entiteAdministratif.getId())){
+                emps.add(employe);
+            }
+        }
+        return emps;
+    }
+    public int countEmploye(String codee){
+        EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codee);
+        int a=0;
         List <Employe> list=employeService.findAll();
-        List <Employe> list1 = null;
-        if (entiteAdministratif == null) {
-            return null;
+        if(entiteAdministratif==null){
+            return -1;
 
         }else{
+
             for(int i=0;i<list.size();i++){
                 if(list.get(i).getEntiteAdministratif()==entiteAdministratif){
-                    list1.add(list.get(i));
-                    
+                    a=a+1;
                 }
             }
-            return list1;
+            return a;
         }
     }
 
@@ -54,7 +64,6 @@ public class EntiteAdministratifService {
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntite);
 
             return entiteAdministratif.getChefEntite();
-
     }
 
 
