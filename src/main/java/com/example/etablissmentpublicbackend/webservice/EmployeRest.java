@@ -2,12 +2,11 @@ package com.example.etablissmentpublicbackend.webservice;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.service.EmployeService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin("*")
+
 @RestController @RequestMapping("/api/v1/employe")
 public class EmployeRest {
     @Autowired
