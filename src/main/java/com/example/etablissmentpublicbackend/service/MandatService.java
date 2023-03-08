@@ -44,9 +44,12 @@ public class MandatService {
 
     public int VerifierResponsabilite(String code) {
         Mandat mandat = mandatDao.findByCode(code);
-        if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
+        if(mandat==null){
             return -1;
-        } else {
+        }else if(mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
+            return -2;
+        }
+        else {
 
             return 1;
         }
@@ -85,8 +88,11 @@ public class MandatService {
 
     public String DureeResponsabilite(String code) {
         Mandat mandat = mandatDao.findByCode(code);
-        if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
-            return "erreur";
+        if(mandat==null){
+            return "-1";
+        }
+        else if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
+            return "-2";
         } else {
             LocalDate dateDebut =mandat.getDateDebut().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate dateFin = mandat.getDateFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
