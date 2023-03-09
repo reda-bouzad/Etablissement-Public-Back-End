@@ -57,8 +57,11 @@ public class MandatService {
 
     public int updateSalaire(Mandat mandat) {
         Mandat dbmandat = mandatDao.findByCode(mandat.getCode());
-        if (mandat.getResponsabilite() == null || mandat.getEmploye() == null) {
+        if(dbmandat==null) {
             return -1;
+        }
+        else if (dbmandat.getResponsabilite() == null || dbmandat.getEmploye() == null) {
+            return -2;
         } else {
 
             Employe employe = dbmandat.getEmploye();
@@ -70,7 +73,7 @@ public class MandatService {
                     dbmandat.setPrimeAjoute(true);
                     mandatDao.save(dbmandat);
                     return 2;
-                } else return -2;
+                } else return -3;
             } else if (dateActuelle.after(dbmandat.getDateFin())) {
                 if (dbmandat.isPrimeAjoute()) {
                     employe.setSalaireDeBase(dbmandat.getEmploye().getSalaireDeBase() - dbmandat.getResponsabilite().getPrime());
@@ -78,7 +81,7 @@ public class MandatService {
                     dbmandat.setPrimeAjoute(false);
                     mandatDao.save(dbmandat);
                     return 3;
-                }else return -3;
+                }else return -4;
 
             }
         }
