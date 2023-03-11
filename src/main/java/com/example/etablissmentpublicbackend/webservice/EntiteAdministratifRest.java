@@ -2,14 +2,16 @@ package com.example.etablissmentpublicbackend.webservice;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
+import com.example.etablissmentpublicbackend.dao.EmployeDao;
 import com.example.etablissmentpublicbackend.dto.EmployeDto;
+import com.example.etablissmentpublicbackend.dto.EntiteAdministraifDto;
 import com.example.etablissmentpublicbackend.service.EntiteAdministratifService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController @RequestMapping("/api/v1/entiteAdministratif")
 public class EntiteAdministratifRest {
     @Autowired
@@ -32,25 +34,22 @@ public class EntiteAdministratifRest {
 
 
 
-    @GetMapping("/count/{codee}")
-    public int countEmploye(String codee) {
-        return entiteAdministratifService.countEmploye(codee);
+    @GetMapping("/count/{code}")
+    public int countEmploye(@PathVariable String code){
+        return entiteAdministratifService.countEmploye(code);
     }
-
-    @GetMapping("/employes/{codeEn}")
-    public List<EmployeDto> listEmploye(@PathVariable String codeEn) {
-        List<EmployeDto> employeDtos = entiteAdministratifService.listEmploye(codeEn);
-        return employeDtos;
-    }
-
 
     @DeleteMapping("/code/{code}")
     @Transactional
     public int deleteByCode(@PathVariable String code) {
         return entiteAdministratifService.deleteByCode(code);
     }
+    @GetMapping("/list/{codeEntity}")
+    public List<Employe> findEmloyeOfAdminEntity(@PathVariable String codeEntity) {
+        return entiteAdministratifService.findEmloyeOfAdminEntity(codeEntity);
+    }
     @GetMapping("/")
-    public List<EntiteAdministratif> findAll() {
+    public List<EntiteAdministraifDto> findAll(){
         return entiteAdministratifService.findAll();
     }
 }

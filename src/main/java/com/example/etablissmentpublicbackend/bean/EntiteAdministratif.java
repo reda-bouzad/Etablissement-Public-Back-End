@@ -1,6 +1,7 @@
 package com.example.etablissmentpublicbackend.bean;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
@@ -47,6 +48,7 @@ public class EntiteAdministratif {
     public void setChefEntite(Employe chefEntite) {
         chefEntite = chefEntite;
     }
+
 }
 @Component
 class EntiteAdministratifListener {

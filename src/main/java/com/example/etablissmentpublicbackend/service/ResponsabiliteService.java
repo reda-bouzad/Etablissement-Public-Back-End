@@ -69,6 +69,7 @@ public class ResponsabiliteService {
         }
     }
      */
+    /*
     public void updateResponsabilite(Long responsabiliteId, Employe employe) {
         Optional<Responsabilite> optionalResponsabilite = responsabiliteDao.findById(responsabiliteId);
         if (employe != null && employe.getId() != null) {
@@ -111,4 +112,6 @@ public class ResponsabiliteService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employe id is required.");
         }
     }
+    */
+
 }

@@ -9,6 +9,8 @@ public class EmployeConverter {
         employeDto.setId(employe.getId());
         employeDto.setNom(employe.getNom());
         employeDto.setPrenom(employe.getPrenom());
+        employeDto.setCin(employe.getCin());
+        employeDto.setSalaireDeBase(employe.getSalaireDeBase());
         return employeDto;
     }
 }

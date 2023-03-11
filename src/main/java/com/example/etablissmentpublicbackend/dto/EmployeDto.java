@@ -5,6 +5,7 @@ public class EmployeDto {
     private String cin;
     private String nom;
     private String prenom;
+    private Double salaireDeBase;
 
     public Long getId() {
         return id;
@@ -37,4 +38,13 @@ public class EmployeDto {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+    public Double getSalaireDeBase() {
+        return salaireDeBase;
+    }
+
+    public void setSalaireDeBase(Double salaireDeBase) {
+        this.salaireDeBase = salaireDeBase;
+    }
+
 }

@@ -43,6 +43,7 @@ public class ResponsabiliteRest {
     public int save(@RequestBody Responsabilite responsabilite) {
         return responsabiliteService.save(responsabilite);
     }
+   /*
     @PutMapping("/update/{responsabilite_id}")
     public ResponseEntity<String> updateName(@PathVariable Long responsabilite_id, @RequestBody Employe employe) {
         try {
@@ -54,4 +55,6 @@ public class ResponsabiliteRest {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
+    */
+
 }

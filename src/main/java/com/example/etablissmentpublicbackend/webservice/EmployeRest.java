@@ -1,6 +1,7 @@
 package com.example.etablissmentpublicbackend.webservice;
 
 import com.example.etablissmentpublicbackend.bean.Employe;
+import com.example.etablissmentpublicbackend.dto.EmployeDto;
 import com.example.etablissmentpublicbackend.service.EmployeService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class EmployeRest {
         return employeService.deleteByCin(cin);
     }
     @GetMapping("/")
-    public List<Employe> findAll() {
-        return employeService.findAll();
+    public List<EmployeDto> findAll() {
+        return employeService.findAllDto()  ;
     }
 }
