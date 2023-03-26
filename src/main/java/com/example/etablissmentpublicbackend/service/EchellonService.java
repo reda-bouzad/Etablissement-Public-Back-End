@@ -25,7 +25,7 @@ public class EchellonService  {
         }
         Echelle echelle = echelleService.findByCode(echellon.getEchelle().getCode());
         echellon.setEchelle(echelle);
-        if(echellon==null){return -1;}
+        if(echelle==null){return -1;}
         else{
             echellonDao.save(echellon);
             return 1;
