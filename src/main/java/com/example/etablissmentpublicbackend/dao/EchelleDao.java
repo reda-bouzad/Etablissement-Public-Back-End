@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EchelleDao extends JpaRepository<Echelle,Long> {
     Echelle findByCode(String code);
-    int deleteByCode(String code);
+    int deleteByLibelle(String libelle);
 }

@@ -2,6 +2,7 @@ package com.example.etablissmentpublicbackend.webservice;
 
 import com.example.etablissmentpublicbackend.bean.Echelle;
 import com.example.etablissmentpublicbackend.service.EchelleService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,17 @@ public class EchelleRest {
     public Echelle findByCode(@PathVariable String code) {
         return echelleService.findByCode(code);
     }
-    @DeleteMapping("/code/{code}")
-    public int deleteByCode(String code) {
-        return echelleService.deleteByCode(code);
+    @DeleteMapping("/libelle/{libelle}")
+    @Transactional
+    public int deleteByLibelle(@PathVariable String libelle) {
+        return echelleService.deleteByLibelle(libelle);
     }
+
+    @PostMapping("/")
+    public int save(@RequestBody Echelle echelle) {
+        return echelleService.save(echelle);
+    }
+
     @GetMapping("/")
     public List<Echelle> findAll() {
         return echelleService.findAll();

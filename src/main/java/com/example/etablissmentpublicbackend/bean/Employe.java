@@ -81,7 +81,5 @@ public class Employe {
     public void setSalaireDeBase(Double salaireDeBase) {
         this.salaireDeBase = salaireDeBase;
     }
-
-
 }
 

@@ -11,6 +11,21 @@ import java.util.List;
 
 @RestController @RequestMapping("/api/v1/echellon")
 public class EchellonRest {
+    @GetMapping("/echelle/libelle/{libelle}")
+    public List<Echellon> findByEchelleLibelle(@PathVariable String libelle) {
+        return echellonService.findByEchelleLibelle(libelle);
+    }
+    @DeleteMapping("/echelle/libelle/{libelle}")
+    @Transactional
+    public int deleteByEchelleLibelle(@PathVariable String libelle) {
+        return echellonService.deleteByEchelleLibelle(libelle);
+    }
+    @DeleteMapping("/code/{code}")
+    @Transactional
+    public int deleteByCode(@PathVariable String code) {
+        return echellonService.deleteByCode(code);
+    }
+
     @Autowired
     private EchellonService echellonService;
     @GetMapping("/code/{code}")
@@ -18,10 +33,7 @@ public class EchellonRest {
         return echellonService.findByCode(code);
     }
 
-   @DeleteMapping("/code/{code}")
-    public int deleteByCode(String code) {
-        return echellonService.deleteByCode(code);
-    }
+
     @GetMapping("/")
     public List<Echellon> findAll() {
         return echellonService.findAll();
@@ -42,11 +54,11 @@ public class EchellonRest {
         return echellonService.findMontant(codeEchlon);
     }
     @GetMapping("/suivant/{codeEchlonS}")
-    public Echellon findEchlonSuivant(String codeEchlon) {
-        return echellonService.findEchlonSuivant(codeEchlon);
+    public Echellon findEchelonSuivant(@PathVariable String codeEchlon) {
+        return echellonService.findEchelonSuivant(codeEchlon);
     }
     @GetMapping("/precedant/{codeEchlonP}")
-    public Echellon findEchlonPrecedant(String codeEchlon) {
-        return echellonService.findEchlonPrecedant(codeEchlon);
+    public Echellon findEchelonPrecedant(@PathVariable String codeEchlon) {
+        return echellonService.findEchelonPrecedant(codeEchlon);
     }
 }

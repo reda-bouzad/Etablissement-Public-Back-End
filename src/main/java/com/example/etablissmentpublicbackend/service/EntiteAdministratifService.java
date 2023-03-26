@@ -48,6 +48,20 @@ public class EntiteAdministratifService {
             return nbrEmployees;
         }
     }
+    //another methode by oussama
+    /*public int countEmploye(String codeEntity){
+        EntiteAdministratif entiteAdministratif = entiteAdministratifDao.findByCode(codeEntity);
+        List<Employe> employees = employeService.findAll();
+        int nbemploye = 0;
+        for(int i=0 ;i<employees.size();i++){
+            Employe e = employees.get(i);
+            if(e.getEntiteAdministratif().getId()==entiteAdministratif.getId()){
+                nbemploye++;
+            }
+        }
+        return  nbemploye;
+    }*/
+
     public List<Employe> findEmloyeOfAdminEntity(String codeEntity){
         EntiteAdministratif entiteAdministratif=entiteAdministratifDao.findByCode(codeEntity);
         List<Employe> emps = new ArrayList<>();
