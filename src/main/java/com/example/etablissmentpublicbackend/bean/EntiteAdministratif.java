@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Entity
 @EntityListeners(EntiteAdministratifListener.class)
 
@@ -12,6 +14,7 @@ public class EntiteAdministratif {
     private Long id;
     private String code;
     private String libelle;
+
     @JsonBackReference
     @OneToOne
     private Employe chefEntite;
@@ -60,7 +63,7 @@ class EntiteAdministratifListener {
     @PostUpdate
     public void afterEnriteAdministratifUpdate(EntiteAdministratif entiteAdministratif) {
         // Code to execute after updating an employee entity
-        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " has been updated");
+        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " has been updated.");
     }
 
     @PreRemove
@@ -72,6 +75,6 @@ class EntiteAdministratifListener {
     @PostRemove
     public void afterEnriteAdministratifDelete(EntiteAdministratif entiteAdministratif) {
         // Code to execute after deleting an employee entity
-        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " has been deleted");
+        System.out.println("EntiteAdministratif " + entiteAdministratif.getCode() + " has been deleted.");
     }
 }

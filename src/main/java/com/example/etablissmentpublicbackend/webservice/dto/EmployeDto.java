@@ -1,20 +1,17 @@
-package com.example.etablissmentpublicbackend.bean;
+package com.example.etablissmentpublicbackend.webservice.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.etablissmentpublicbackend.bean.Echellon;
+import com.example.etablissmentpublicbackend.bean.EntiteAdministratif;
 import jakarta.persistence.*;
 
-@Entity
-public class Employe {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+
+public class EmployeDto {
+
     private Long id;
     private String cin;
     private String nom;
     private String prenom;
-    @ManyToOne
     private Echellon echellon;
-
-
-    @ManyToOne
     private EntiteAdministratif entiteAdministratif;
     private Double salaireDeBase;
     private Long nombreMois;
