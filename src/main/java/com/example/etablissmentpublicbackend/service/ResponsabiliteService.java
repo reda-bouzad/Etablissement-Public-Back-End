@@ -3,6 +3,7 @@ package com.example.etablissmentpublicbackend.service;
 import com.example.etablissmentpublicbackend.bean.Employe;
 import com.example.etablissmentpublicbackend.bean.Responsabilite;
 import com.example.etablissmentpublicbackend.dao.ResponsabiliteDao;
+import com.example.etablissmentpublicbackend.service.facade.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

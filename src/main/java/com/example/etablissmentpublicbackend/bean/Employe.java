@@ -13,9 +13,11 @@ public class Employe {
     @ManyToOne
     private Echellon echellon;
 
+    private String codeEchellon;
 
     @ManyToOne
     private EntiteAdministratif entiteAdministratif;
+    private String codeEntite;
     private Double salaireDeBase;
     private Long nombreMois;
 
@@ -83,6 +85,20 @@ public class Employe {
         this.salaireDeBase = salaireDeBase;
     }
 
+    public String getCodeEchellon() {
+        return codeEchellon;
+    }
 
+    public void setCodeEchellon(String codeEchellon) {
+        this.codeEchellon = codeEchellon;
+    }
+
+    public String getCodeEntite() {
+        return codeEntite;
+    }
+
+    public void setCodeEntite(String codeEntite) {
+        this.codeEntite = codeEntite;
+    }
 }
 

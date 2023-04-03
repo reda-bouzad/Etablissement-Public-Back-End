@@ -15,9 +15,10 @@ public class EntiteAdministratif {
     private String code;
     private String libelle;
 
-    @JsonBackReference
+    @JsonBackReference(value="user-persooon")
     @OneToOne
     private Employe chefEntite;
+    private String cinChef;
 
     public Long getId() {
         return id;
@@ -49,6 +50,14 @@ public class EntiteAdministratif {
 
     public void setChefEntite(Employe chefEntite) {
         chefEntite = chefEntite;
+    }
+
+    public String getCinChef() {
+        return cinChef;
+    }
+
+    public void setCinChef(String cinChef) {
+        this.cinChef = cinChef;
     }
 }
 @Component

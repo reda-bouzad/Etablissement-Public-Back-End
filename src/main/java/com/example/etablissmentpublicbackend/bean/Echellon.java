@@ -11,10 +11,10 @@ public class Echellon {
     @ManyToOne
     private Echelle echelle;
     private Double montant;
-    @JsonBackReference
+    @JsonBackReference(value="user-person")
     @OneToOne
     private Echellon echellonSuivant;
-    @JsonBackReference
+    @JsonBackReference(value="user-personn")
     @OneToOne
     private Echellon echellonPrecedant;
     private Long delai;
